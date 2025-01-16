@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../reset.css" />
-    <link rel="stylesheet" href="../base.css" />
-  </head>
+{% extends '../base/base.html'%}
+{% load static%}
+{%block head%}
   <style>
     main {
       display: flex;
@@ -71,17 +65,12 @@
       cursor: pointer;
     }
   </style>
-  <body>
-    <header>
-      <nav>
-        <a href="">Pirogrammer Card Game</a>
-        <div class="base_menus">
+{%endblock head%}
+{% block base_menus%}
           <a href="">홈으로</a>
           <a href="">로그인</a>
-        </div>
-      </nav>
-    </header>
-    <main>
+{%endblock base_menus%}
+{% block content %}
       <div class="mainWrapper">
         <div class="loginheader">회원가입</div>
 
@@ -91,9 +80,4 @@
         <input type="password" placeholder="Check your Password" />
         <input type="submit" value="Sign in" class="btn" />
       </div>
-    </main>
-    <footer>
-      <p>피로그래밍 22기 카드게임 세션3조</p>
-    </footer>
-  </body>
-</html>
+{% endblock content %}
