@@ -1,6 +1,20 @@
+<<<<<<< HEAD
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/game/reset.css" />
+    <link rel="stylesheet" href="../../static/game/base.css" />
+  </head>
+=======
 {% extends '../base/base.html'%}
 {% load static%}
 {%block head%}
+>>>>>>> cd2a166e6f860be504767ef9f05b4b48694ba451
   <style>
     main {
       display: flex;
@@ -27,6 +41,19 @@
       margin: 1rem;
     }
   </style>
+<<<<<<< HEAD
+  <body>
+    <header>
+      <nav>
+        <a href="">Pirogrammer Card Game</a>
+        <div class="base_menus">
+          <a href="{% url 'users:login' %}">로그인</a>
+          <a href="{%url 'users:signup'%}">회원가입</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+=======
 {%endblock head%}
 {% block base_menus%}
           <a href="">로그인</a>
@@ -34,6 +61,7 @@
 {%endblock base_menus%}
 
 {% block content %}
+>>>>>>> cd2a166e6f860be504767ef9f05b4b48694ba451
       <div class="title">Piro Game</div>
       <div class="loginING">user1 님이 로그인 중</div>
       <div>
