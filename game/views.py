@@ -15,7 +15,7 @@ def create_game(request):
     return render(request, 'smk_gameStart/smk_Attack.html')
 
 def game_list(request, pk):
-    user = User.objects.get(id=pk)
+    user = CustomUser.objects.get(id=pk)
     context = {
         'user': user,
         
@@ -23,7 +23,7 @@ def game_list(request, pk):
     return render(request, 'game/cms.html', context)
 
 def rankings(request):
-    users = User.objects.order_by('-score')[:3]
+    users = CustomUser.objects.order_by('-score')[:3]
     context = {
         'users':users,
     }

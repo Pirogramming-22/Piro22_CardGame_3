@@ -50,7 +50,6 @@ TEMPLATES = [
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users.CustomUser'
 
-
 # 정적 파일 경로 설정
 STATICFILES_DIRS = [
     BASE_DIR / 'static',  # Django 3.2 이상
