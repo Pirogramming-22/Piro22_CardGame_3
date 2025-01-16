@@ -1,84 +1,51 @@
-<<<<<<< HEAD
-{% load static %}
+{% extends '../base/base.html' %} {% load static %} {% block head %}
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Inter;
+    color: #fff;
+  }
+  .title {
+    font-size: 8rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  }
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../../static/game/reset.css" />
-    <link rel="stylesheet" href="../../static/game/base.css" />
-  </head>
-=======
-{% extends '../base/base.html'%}
-{% load static%}
-{%block head%}
->>>>>>> cd2a166e6f860be504767ef9f05b4b48694ba451
-  <style>
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: Inter;
-      color: #fff;
-    }
-    .title {
-      font-size: 8rem;
-      font-style: normal;
-      font-weight: 800;
-      line-height: normal;
-    }
+  button {
+    background-color: #17d6b5;
+    width: 12.75rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    color: white;
+    margin: 1rem;
+  }
+</style>
+{% endblock head %} {% block base_menus %}
+<a href="{% url 'users:login' %}">로그인</a>
+<a href="{% url 'users:signup' %}">회원가입</a>
+{% endblock base_menus %} {% block content %}
+<div class="title">Piro Game</div>
+<div class="loginING">user1 님이 로그인 중</div>
+<div>
+  <button class="start">start</button>
+  <button class="list">list</button>
+</div>
+{% endblock content %} {% block js %}
+<script>
+  // 로그인 상태 여부 (예: 로컬 스토리지나 쿠키 확인)
+  const isLoggedIn = false;
 
-    button {
-      background-color: #17d6b5;
-      width: 12.75rem;
-      height: 3.5rem;
-      border-radius: 1rem;
-      font-size: 2rem;
-      color: white;
-      margin: 1rem;
-    }
-  </style>
-<<<<<<< HEAD
-  <body>
-    <header>
-      <nav>
-        <a href="">Pirogrammer Card Game</a>
-        <div class="base_menus">
-          <a href="{% url 'users:login' %}">로그인</a>
-          <a href="{%url 'users:signup'%}">회원가입</a>
-        </div>
-      </nav>
-    </header>
-    <main>
-=======
-{%endblock head%}
-{% block base_menus%}
-          <a href="">로그인</a>
-          <a href="">회원가입</a>
-{%endblock base_menus%}
-
-{% block content %}
->>>>>>> cd2a166e6f860be504767ef9f05b4b48694ba451
-      <div class="title">Piro Game</div>
-      <div class="loginING">user1 님이 로그인 중</div>
-      <div>
-        <button class="start">start</button> <button class="list">list</button>
-      </div>
-{% endblock content %}
-{% block js%}
-  <script>
-    // 로그인 상태 여부 (예: 로컬 스토리지나 쿠키 확인)
-    const isLoggedIn = false;
-
-    // 로그인 상태에 따라 loginING 요소를 숨김
-    const loginStatusElement = document.querySelector(".loginING");
-    const setList = document.querySelector(".list");
-    if (!isLoggedIn) {
-      loginStatusElement.style.display = "none";
-      setList.style.display = "none";
-    }
-  </script>
-{% endblock js%}
+  // 로그인 상태에 따라 loginING 요소를 숨김
+  const loginStatusElement = document.querySelector(".loginING");
+  const setList = document.querySelector(".list");
+  if (!isLoggedIn) {
+    loginStatusElement.style.display = "none";
+    setList.style.display = "none";
+  }
+</script>
+{% endblock js %}

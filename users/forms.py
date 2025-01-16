@@ -33,7 +33,7 @@ class SignupForm(UserCreationForm):
     # Meta 클래스: 폼의 설정을 정의
     class Meta:
         model = CustomUser  # 이 폼이 연결될 데이터베이스 모델
-        fields = ['username', 'email', 'password1', 'password2', 'gender', 'job', 'bio']  # 폼에 포함될 필드 목록
+        fields = ['username', 'email', 'password1', 'password2',]  # 폼에 포함될 필드 목록
 
         # help_texts: 각 필드의 기본 도움말 제거
         help_texts = {

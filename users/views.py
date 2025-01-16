@@ -1,49 +1,47 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
-
 from django.contrib.auth.forms import AuthenticationForm
-from .models import CustomUser  # CustomUser 모델 사용
-from django.contrib import messages
+from users.forms import SignupForm
 
 def main(request):
     return render(request, "auth/main.html")
 
+
 def signup(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        username = request.POST.get('username')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-
-        # 비밀번호 확인
-        if password1 == password2:
-            # 사용자 생성
-            try:
-                user = CustomUser.objects.create_user(  # CustomUser 사용
-                    username=username,
-                    email=email,
-                    password=password1,
-                )
-                auth.login(request, user)
-                return redirect('users:main')
-            except Exception as e:
-                messages.error(request, f"Error creating account: {e}")
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth.login(request, user)
+            return redirect('users:main')
         else:
-            messages.error(request, "Passwords do not match.")
-    return render(request, 'auth/signup.html')
+            # return redirect('users:signup')
+            return render(request, 'auth/signup.html', {'form': form})
+    else:
+        form = SignupForm()
+        context = {
+            'form': form,
+        }
+        return render(request, template_name='auth/signup.html', context=context)
 
 def login(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
+        form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             user = form.get_user()
             auth.login(request, user)
             return redirect('users:main')
         else:
-            messages.error(request, "Invalid username or password.")
+            context = {
+                'form':form,
+            }
+            return render(request, template_name='auth/login.html',context=context)
     else:
         form = AuthenticationForm()
-    return render(request, 'auth/login.html', {'form': form})
+        context = {
+            'form': form,
+        }
+        return render(request, template_name='auth/login.html', context=context)
 
 def logout(request):
     auth.logout(request)

@@ -20,6 +20,8 @@ from game import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('users.urls')),
+    path('', include('game.urls')),
     path('gameInfo1/', views.gameInfo1),
     path('gameInfo2/', views.gameInfo2),
     path('gameInfo3/', views.gameInfo3),
