@@ -87,7 +87,18 @@ USE_I18N = True
 
 USE_TZ = True
 
+<<<<<<< HEAD
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # 프로젝트 루트의 static 디렉토리
+]
+=======
 STATIC_URL = 'static/'
+>>>>>>> f1d2a0bc48523e989157dfa638fc4a9a7cc0d74a
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 

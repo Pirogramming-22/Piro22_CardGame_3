@@ -5,25 +5,26 @@
 }
 
 * {
+    margin: 0;
+}
+
+:root {
+  --white: #ffffff;
+  --header: #319b88;
+  --image_background: rgba(51, 51, 51, 0.5);
+}
+
+* {
   margin: 0;
 }
 
 body {
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-  background-image: url(../background.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-=======
     display: flex;
     flex-direction: column;
     background-image: url(../background.png);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
->>>>>>> cd2a166e6f860be504767ef9f05b4b48694ba451
 }
 
 footer,
