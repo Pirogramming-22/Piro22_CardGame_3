@@ -1,11 +1,13 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../reset.css" />
-    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="../../static/game/reset.css" />
+    <link rel="stylesheet" href="../../static/game/base.css" />
   </head>
   <style>
     main {
@@ -38,8 +40,8 @@
       <nav>
         <a href="">Pirogrammer Card Game</a>
         <div class="base_menus">
-          <a href="">로그인</a>
-          <a href="">회원가입</a>
+          <a href="{% url 'users:login' %}">로그인</a>
+          <a href="{%url 'users:signup'%}">회원가입</a>
         </div>
       </nav>
     </header>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../reset.css" />
-    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="../../static/game/reset.css" />
+    <link rel="stylesheet" href="../../static/game/base.css" />
   </head>
   <style>
     main {
@@ -15,7 +15,7 @@
     }
     .mainWrapper {
       width: 20rem;
-      height: 22rem;
+      height: 25rem;
       margin: auto;
       font-size: 15px;
       background-color: white;
@@ -28,7 +28,7 @@
         0 15px 12px rgba(0, 0, 0, 0.22);
     }
     .loginheader {
-      margin-bottom: 3rem;
+      margin-bottom: 2.4rem;
     }
     input[type="text"],
     input[type="password"] {
@@ -40,9 +40,8 @@
       outline: none;
       padding-left: 10px;
       background-color: rgb(233, 233, 233);
-      margin-bottom: 1rem;
+      margin-bottom: 1.3rem;
     }
-
     .btn {
       width: 13rem;
       height: 2.4rem;
@@ -69,42 +68,40 @@
     .signup,
     .kakaoLogin {
       margin: 0.3rem;
-      font-size: 12px;
-      color: darkgray;
-      text-decoration-line: none;
       cursor: pointer;
-    }
-    .kakaoLogin {
-      color: #a69316;
     }
   </style>
   <body>
     <header>
       <nav>
-        <a href="">Pirogrammer Card Game</a>
+        <a href="/">Pirogrammer Card Game</a>
         <div class="base_menus">
-          <a href="./main.html">홈으로</a>
-          <a href="./signup.html">회원가입</a>
+          <a href="{% url 'users:main' %}">홈으로</a>
+          <a href="{% url 'users:login' %}">로그인</a>
         </div>
       </nav>
     </header>
     <main>
       <div class="mainWrapper">
-        <div class="loginheader">로그인</div>
-
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-
-        <input
-          type="submit"
-          value="Log in"
-          class="btn"
-          onclick="alert('로그인 성공!')"
-        />
-
-        <div class="signup"><a href="signup.html">회원가입</a></div>
-
-        <div class="kakaoLogin">카카오 로그인</div>
+        <form method="POST" action="{% url 'users:signup' %}">
+          {% csrf_token %}
+          <div class="loginheader">회원가입</div>
+          <input type="text" name="email" placeholder="Email" required />
+          <input type="text" name="username" placeholder="Nickname" required />
+          <input
+            type="password"
+            name="password1"
+            placeholder="Password"
+            required
+          />
+          <input
+            type="password"
+            name="password2"
+            placeholder="Check your Password"
+            required
+          />
+          <input type="submit" value="Sign up" class="btn" />
+        </form>
       </div>
     </main>
     <footer>
