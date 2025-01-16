@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
-from django.contrib.auth import authenticate
+
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import User  # 기본 User 모델 사용
+from .models import CustomUser  # CustomUser 모델 사용
 from django.contrib import messages
 
 def main(request):
@@ -19,7 +19,7 @@ def signup(request):
         if password1 == password2:
             # 사용자 생성
             try:
-                user = User.objects.create_user(
+                user = CustomUser.objects.create_user(  # CustomUser 사용
                     username=username,
                     email=email,
                     password=password1,
