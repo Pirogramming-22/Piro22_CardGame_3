@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from users.models import User
 
 # Create your views here.
 def create_game(request):
@@ -7,5 +8,9 @@ def create_game(request):
 def game_list(request):
     return render(request, 'game/cms.html')
 
-def rankings(request):
-    return render(request, 'game/jwj.html')
+def rank(request):
+    users = User.objects.order_by('-score')[:3]
+    context = {
+        'users':users,
+    }
+    return render(request, 'game/rank.html', context)

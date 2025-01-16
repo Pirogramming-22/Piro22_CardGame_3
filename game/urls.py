@@ -7,5 +7,4 @@ urlpatterns = [
     #path('<int:game_id>/', views.game_detail, name='game_detail'),  # 특정 게임 상세 보기
     #path('<int:game_id>/respond/', views.respond_game, name='respond_game'),  # 게임에 반격
     path('rankings/', views.rankings, name='rankings'),  # 랭킹 보기
-    
 ]

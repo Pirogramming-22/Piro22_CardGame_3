@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from users.models import User
 
 # Create your models here.
 class Game(models.Model):
@@ -8,6 +9,5 @@ class Game(models.Model):
   attacker_card = models.IntegerField()
   defender_card = models.IntegerField(null=True, blank=True)
   result = models.CharField(max_length=10, null=True, blank=True)
-  # 게임 승리자
-  # winner = models.ForeignKey(User, related_name='winner', null=True, blank=True, on_delete=models.SET_NULL)
+  winner = models.ForeignKey(User, related_name='winner', null=True, blank=True, on_delete=models.SET_NULL)
   is_greater_wins = models.BooleanField()
