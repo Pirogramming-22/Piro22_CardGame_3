@@ -1,16 +1,13 @@
-{% extends '../base/base.html'%}
-{% load static%}
-{% block head %}
-  <link rel="stylesheet" href="{%static 'game/gameInfo.css'%}">
-{% endblock head %}
-{% block content %}
-    <!-- 구현 -->
-    <section class="game-box">
-      <h2>6 - user1 VS user3</h2>
-      <div class="game-actions">
-        <button>대응하기</button>
-        <button>천적목록</button>
-      </div>
-    </section>
-    <!-- 구현 -->
+{% extends '../base/base.html'%} {% load static%} {% block head %}
+<link rel="stylesheet" href="{%static 'game/gameInfo.css'%}" />
+{% endblock head %} {% block content %}
+<!-- 구현 -->
+<section class="game-box">
+  <h2>6 - user1 VS user3</h2>
+  <div class="game-actions">
+    <button>대응하기</button>
+    <button>천적목록</button>
+  </div>
+</section>
+<!-- 구현 -->
 {% endblock content%}

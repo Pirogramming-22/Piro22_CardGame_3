@@ -16,9 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from game import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('', include('game.urls')),
+    path('gameInfo1/', views.gameInfo1),
+    path('gameInfo2/', views.gameInfo2),
+    path('gameInfo3/', views.gameInfo3),
+    path('users/', include('users.urls')),
+    path('game/', include('game.urls')),
+    path('smk_Attack', views.smk_Attack),
+    path('smk_CounterAttack', views.smk_CounterAttack),
 ]
+
+
