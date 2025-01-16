@@ -5,10 +5,15 @@ from users.models import User
 def create_game(request):
     return render(request, 'smk_gameStart/smk_Attack.html')
 
-def game_list(request):
-    return render(request, 'game/cms.html')
+def game_list(request, pk):
+    user = User.objects.get(id=pk)
+    context = {
+        'user': user,
+        
+    }
+    return render(request, 'game/cms.html', context)
 
-def rank(request):
+def rankings(request):
     users = User.objects.order_by('-score')[:3]
     context = {
         'users':users,
