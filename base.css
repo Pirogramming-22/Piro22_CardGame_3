@@ -1,17 +1,29 @@
-* {
-    margin: 0;
-}
-
 :root {
     --white: #FFFFFF;
     --header: #319B88;
     --image_background: rgba(51, 51, 51, 0.5);
 }
 
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 footer, header {
-    background-color: var(--image_background);
+    background-color: var(--header);
     margin: 0;
     color: var(--white);
+}
+
+main {
+    background-color: var(--image_background);
 }
 
 nav {
