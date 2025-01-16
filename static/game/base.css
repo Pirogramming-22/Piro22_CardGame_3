@@ -8,13 +8,24 @@
     margin: 0;
 }
 
+:root {
+    --white: #FFFFFF;
+    --header: #319B88;
+    --image_background: rgba(51, 51, 51, 0.5);
+}
+
+* {
+    margin: 0;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    background-image: url('background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+    background-image: url(../background.png); /* 배경 이미지 설정 */
+    background-size: cover; /* 배경 이미지를 컨테이너에 맞게 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 제거 */
+    background-position: center; /* 배경 이미지 가운데 정렬 */
+    height: 100vh; /* 화면 전체 높이 */
 }
 
 footer, header {
@@ -29,11 +40,11 @@ footer, header {
 
 main {
     flex: 1;
-    background-color: var(--image_background);
-    padding-top: 60px; /* Header height compensation */
-    padding-bottom: 40px; /* Footer height compensation */
     display: flex;
-    align-items: center;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    width: 100%; /* 화면 전체 너비 */
+    min-height: calc(100vh - 100px); /* Header와 Footer 높이를 제외한 최소 높이 */
 }
 
 header {
