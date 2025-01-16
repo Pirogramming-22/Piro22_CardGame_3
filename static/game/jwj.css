@@ -1,0 +1,106 @@
+.rank_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 350px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--header);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rank_title {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    width: 250px;
+    text-align: center;
+    color: var(--white);
+    padding-bottom: 2px;
+}
+
+.ranking {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 200px;
+    margin: 20px 0;
+}
+
+.ranking p {
+    color: var(--white);
+}
+
+.ranking > div {
+    position: relative;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.bar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 70px;
+    background-color: var(--white);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+#bar1 {
+    background-color: gold;
+    height: 150px;
+}
+
+#bar2 {
+    background-color: silver;
+    height: 100px;
+}
+
+#bar3 {
+    background-color: brown;
+    height: 50px;
+}
+
+.ranking > div p:first-child {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    font-weight: bold;
+}
+
+.ranking > div p:nth-child(2) {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+}
+
+.ranking > div p:last-child {
+    margin-top: 5px;
+    font-size: 1em;
+    color: var(--white);
+}
+
+.list_button {
+    margin-top: 20px;
+    padding: 5px 15px;
+    font-size: 1em;
+    color: black;
+    background-color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.list_button:hover {
+    background-color: gray;
+}
