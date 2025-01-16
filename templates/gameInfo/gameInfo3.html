@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base/base.html' %}
 
 {% load static %}
@@ -26,3 +27,27 @@
   <!-- 구현 -->
 </main>
 {% endblock %}
+=======
+{% extends '../base/base.html'%}
+{% load static%}
+{% block head %}
+  <link rel="stylesheet" href="{%static 'game/gameInfo.css'%}">
+{% endblock head %}
+{% block content %}
+    <!-- 구현 -->
+    <section class="game-box">
+        <h2>5 - user1 VS user2</h2>
+        <p>숫자가 작은 사람이 이깁니다.</p>
+        <ul class="game-stats">
+          <li>user1: 6</li>
+          <li>user2: 4</li>
+          <li>결과: 패배</li>
+          <li>점수: -6</li>
+        </ul>
+        <div class="game-actions">
+          <button>전체목록</button>
+        </div>
+      </section>
+    <!-- 구현 -->
+{% endblock content%}
+>>>>>>> f1d2a0bc48523e989157dfa638fc4a9a7cc0d74a

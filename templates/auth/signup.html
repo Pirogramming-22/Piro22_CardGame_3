@@ -83,17 +83,28 @@
     </header>
     <main>
       <div class="mainWrapper">
-        <div class="loginheader">회원가입</div>
-
-        <input type="text" placeholder="Email" />
-        <input type="text" placeholder="Nickname" />
-        <input type="password" placeholder="Password" />
-        <input type="password" placeholder="Check your Password" />
-        <input type="submit" value="Sign in" class="btn" />
+        <form method="POST" action="{% url 'users:signup' %}">
+          {% csrf_token %}
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required />
+          </div>
+          <div>
+            <label for="password1">Password:</label>
+            <input type="password" name="password1" id="password1" required />
+          </div>
+          <div>
+            <label for="password2">Confirm Password:</label>
+            <input type="password" name="password2" id="password2" required />
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
       </div>
+      {% endblock content %}
     </main>
-    <footer>
-      <p>피로그래밍 22기 카드게임 세션3조</p>
-    </footer>
   </body>
 </html>
