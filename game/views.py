@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from users.models import User
+from users.models import CustomUser
 
 # Create your views here.
 def create_game(request):
