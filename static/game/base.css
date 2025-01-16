@@ -32,6 +32,8 @@ main {
     background-color: var(--image_background);
     padding-top: 60px; /* Header height compensation */
     padding-bottom: 40px; /* Footer height compensation */
+    display: flex;
+    align-items: center;
 }
 
 header {

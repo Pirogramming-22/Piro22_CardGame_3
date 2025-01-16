@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../reset.css">
+  <link rel="stylesheet" href="../base.css">
+  <link rel="stylesheet" href="smk.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="">Pirogrammer Card Game</a>
+      <div class="base_menus">
+        <a href="">게임하기</a>
+        <a href="">랭킹보기</a>
+        <a href="">로그아웃</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- 구현 -->
+
+    <section class="game-box">
+      <div class="gameAttack-defender">
+        <h2>내가 고른 카드: </h2>
+        <form id="cardForm">
+          <div id="radioButtons">
+            <!-- 라디오 버튼이 여기에 생성됩니다 -->
+          </div>
+        </form>
+      </div>
+        
+      <div class="gameAttack-container">
+        <h2> Defender: </h2>
+        <select id = "defender-select">
+          <!-- 유저 리스트로 수정 예정 -->
+          <option value="1">user2</option>
+          <option value="2">user3</option>
+        </select>
+      </div>
+
+      <div class="button-container">
+        <a href="" class="game-button" style="color:#319B88">Attack!</a>
+      </div>
+    </section>
+
+    <!-- 랜덤한 숫자 5개를 뽑아서 라디오 버튼으로 만들어주는 기능-> 수정예정
+      <script> 
+        function generateRandomNumbers() {
+          const numbers = Array.from({ length: 10 }, (_, i) => i + 1); // 1~10 숫자 배열
+          const randomNumbers = [];
+      
+          // 랜덤하게 5개의 숫자를 선택
+          while (randomNumbers.length < 5) {
+            const randomIndex = Math.floor(Math.random() * numbers.length);
+            randomNumbers.push(numbers.splice(randomIndex, 1)[0]); // 중복 제거
+          }
+      
+          // 라디오 버튼 생성
+          const radioButtonsContainer = document.getElementById('radioButtons');
+          randomNumbers.forEach((number) => {
+          const radioItem = document.createElement('div');
+          radioItem.className = 'radio-item'; // 좌우 정렬 스타일 적용
+
+          const radio = document.createElement('input');
+          radio.type = 'radio';
+          radio.name = 'card';
+          radio.value = number;
+          radio.id = `card${number}`;
+
+          const label = document.createElement('label');
+          label.htmlFor = `card${number}`;
+          label.textContent = number;
+
+          radioItem.appendChild(radio);
+          radioItem.appendChild(label);
+          radioButtonsContainer.appendChild(radioItem);
+        });
+      }
+
+        // 페이지 로드 시 초기 실행
+        window.onload = generateRandomNumbers;
+      </script>
+    -->
+    <!-- 구현 -->
+  </main>
+  <footer>
+    <p>피로그래밍 22기 카드게임 세션3조</p>
+  </footer>
+</body>
+</html>
