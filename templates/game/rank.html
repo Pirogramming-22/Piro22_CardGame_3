@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -16,19 +16,30 @@
             <h4 class="rank_title">Piro 명예의 전당</h4>
             <div class="ranking">
                 <div class="first">
-                    {% for user in users %}
-                    <p>{}</p>
-                    <p>11</p>
+                    {% if users.0 %}
+                        <p>{{ users.0.user }}</p>
+                        <p>{{ users.0.score }}</p>
+                    {% else %}
+                        <p>No Data</p>
+                    {% endif %}
                     <div class="bar" id="bar1">1</div>
                 </div>
                 <div class="second">
-                    <p>user1</p>
-                    <p>-1</p>
+                    {% if users.1 %}
+                        <p>{{ users.1.user }}</p>
+                        <p>{{ users.1.score }}</p>
+                    {% else %}
+                        <p>No Data</p>
+                    {% endif %}
                     <div class="bar" id="bar2">2</div>
                 </div>
                 <div class="third">
-                    <p>user4</p>
-                    <p>-6</p>
+                    {% if users.2 %}
+                        <p>{{ users.2.user }}</p>
+                        <p>{{ users.2.score }}</p>
+                    {% else %}
+                        <p>No Data</p>
+                    {% endif %}
                     <div class="bar" id="bar3">3</div>
                 </div>
             </div>
