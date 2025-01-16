@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <style>
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mainWrapper {
+      width: 20rem;
+      height: 25rem;
+      margin: auto;
+      font-size: 15px;
+      background-color: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+        0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+    .loginheader {
+      margin-bottom: 2.4rem;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 15rem;
+      height: 32px;
+      font-size: 15px;
+      border: 0;
+      border-radius: 15px;
+      outline: none;
+      padding-left: 10px;
+      background-color: rgb(233, 233, 233);
+      margin-bottom: 1.3rem;
+    }
+    .btn {
+      width: 13rem;
+      height: 2.4rem;
+      font-size: 15px;
+      border: 0;
+      border-radius: 15px;
+      outline: none;
+      padding-left: 10px;
+      background-color: #17d6b5;
+      cursor: pointer;
+    }
+
+    .btn:active {
+      width: 13rem;
+      height: 2.4rem;
+      font-size: 15px;
+      border: 0;
+      border-radius: 15px;
+      outline: none;
+      padding-left: 10px;
+      cursor: pointer;
+    }
+
+    .signup,
+    .kakaoLogin {
+      margin: 0.3rem;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <header>
+      <nav>
+        <a href="">Pirogrammer Card Game</a>
+        <div class="base_menus">
+          <a href="">홈으로</a>
+          <a href="">로그인</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="mainWrapper">
+        <div class="loginheader">회원가입</div>
+
+        <input type="text" placeholder="Email" />
+        <input type="text" placeholder="Nickname" />
+        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Check your Password" />
+        <input type="submit" value="Sign in" class="btn" />
+      </div>
+    </main>
+    <footer>
+      <p>피로그래밍 22기 카드게임 세션3조</p>
+    </footer>
+  </body>
+</html>

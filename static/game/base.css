@@ -3,21 +3,21 @@
     --header: #319B88;
     --image_background: rgba(51, 51, 51, 0.5);
   }
-  
-  * {
+
+* {
     margin: 0;
-  }
-  
-  body {
+}
+
+body {
     display: flex;
     flex-direction: column;
     background-image: url('background.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-  }
-  
-  footer, header {
+}
+
+footer, header {
     background-color: var(--header);
     margin: 0;
     color: var(--white);
@@ -25,40 +25,39 @@
     padding: 20px 0;
     position: fixed;
     left: 0;
-  }
-  
-  main {
+}
+
+main {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: var(--image_background);
     padding-top: 60px; /* Header height compensation */
     padding-bottom: 40px; /* Footer height compensation */
-  }
-  
-  header {
+    display: flex;
+    align-items: center;
+}
+
+header {
     top: 0;
-  }
-  
-  footer {
+}
+
+footer {
     bottom: 0;
     text-align: center;
-  }
-  
-  nav {
+}
+
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-inline: 40px;
-  }
-  
-  .base_menus {
+}
+
+.base_menus {
     display: flex;
     gap: 40px;
-  }
-  
-  a {
+}
+
+a {
     text-decoration: none;
     color: var(--white);
   }
