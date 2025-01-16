@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="cms.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="">Pirogrammer Card Game</a>
+      <div class="base_menus">
+        <a href="">게임하기</a>
+        <a href="">랭킹보기</a>
+        <a href="">로그아웃</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div id="cms-main-container">
+      <div>
+        <h2 id="History-list">History List</h2>
+      </div>
+      <div id="now-player">
+        <p>현재 플레이어 <span> : user1</span></p>
+      </div>
+      <div id="game-list">
+        <table>
+          <thead class="gameTbHeader">
+            <tr>
+              <th>게임번호</th>
+              <th>플레이어</th>
+              <th>게임상황</th>
+              <th>게임정보</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="gameTbList">
+              <td>1</td>
+              <td>user4 vs user1</td>
+              <td>
+                <span class="counterAttack">
+                  <a href="#">CounterAttack</a>
+                </span>
+              </td>
+              <td><button class="gameTbBtn">게임 정보</button></td>
+            </tr>
+            <tr class="gameTbList">
+              <td>2</td>
+              <td>user1 vs user2</td>
+              <td>
+                <span class="game-end">
+                  결과: 패배
+                </span>
+              </td>
+              <td><button class="gameTbBtn">게임 정보</button></td>
+            </tr>
+            <tr class="gameTbList">
+              <td>3</td>
+              <td>user1 vs user3</td>
+              <td>
+                <span class="game-ing">
+                  진행중...<a href="#">게임취소</a>
+                </span>
+              </td>
+              <td><button class="gameTbBtn">게임 정보</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>피로그래밍 22기 카드게임 세션3조</p>
+  </footer>
+</body>
+</html>

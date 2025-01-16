@@ -1,0 +1,54 @@
+#cms-main-container{
+  color: var(--header);
+  margin: 20px 14%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 20px;
+}
+#History-list{
+  font-size: 30px;
+  font-weight: 900;
+}
+#now-player{
+  padding: 20px 0;
+  border-bottom: 2px solid  var(--header);
+}
+#now-player > p{
+  font-size: 32px;
+  font-weight: 500;
+}
+#now-player > p> span{
+  font-weight: 600;
+}
+.gameTbHeader{
+  display: none;
+}
+
+#game-list table{
+  width: 100%;
+  text-align: center;
+}
+.gameTbList td, .gameTbList th{
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.gameTbList td:nth-child(3){
+  text-align: left;
+}
+.gameTbList a{
+  color: var(--header);
+}
+#game-list .counterAttack a{
+  color: var(--white);
+  background-color: var(--header);
+  color: var(--white);
+  padding: 5px 60px;
+}
+.gameTbBtn{
+  background-color: var(--header);
+  color: var(--white);
+  padding: 10px;
+  width: 100%;
+}
