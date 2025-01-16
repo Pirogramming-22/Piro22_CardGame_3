@@ -1,25 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="gameInfo.css">
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="">Pirogrammer Card Game</a>
-      <div class="base_menus">
-        <a href="">게임하기</a>
-        <a href="">랭킹보기</a>
-        <a href="">로그아웃</a>
+<<<<<<< HEAD
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'game/gameinfo.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+  <!-- 구현 -->
+  <section class="game-box">
+      <h2>5 - user1 VS user2</h2>
+      <p>숫자가 작은 사람이 이깁니다.</p>
+      <ul class="game-stats">
+        <li>user1: 6</li>
+        <li>user2: 4</li>
+        <li>결과: 패배</li>
+        <li>점수: -6</li>
+      </ul>
+      <div class="game-actions">
+        <button>전체목록</button>
       </div>
-    </nav>
-  </header>
-  <main>
+    </section>
+  <!-- 구현 -->
+</main>
+{% endblock %}
+=======
+{% extends '../base/base.html'%}
+{% load static%}
+{% block head %}
+  <link rel="stylesheet" href="{%static 'game/gameInfo.css'%}">
+{% endblock head %}
+{% block content %}
     <!-- 구현 -->
     <section class="game-box">
         <h2>5 - user1 VS user2</h2>
@@ -35,9 +49,5 @@
         </div>
       </section>
     <!-- 구현 -->
-  </main>
-  <footer>
-    <p>피로그래밍 22기 카드게임 세션3조</p>
-  </footer>
-</body>
-</html>
+{% endblock content%}
+>>>>>>> f1d2a0bc48523e989157dfa638fc4a9a7cc0d74a
