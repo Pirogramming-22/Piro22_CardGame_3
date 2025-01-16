@@ -1,11 +1,13 @@
+{%load static%}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../../static/game/reset.css" />
-    <link rel="stylesheet" href="../../static/game/base.css" />
+    <title>로그인</title>
+    <link rel="stylesheet" href="{% static 'game/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'game/base.css' %}" />
   </head>
   <style>
     main {
@@ -81,29 +83,49 @@
   <body>
     <header>
       <nav>
-        <a href="">Pirogrammer Card Game</a>
+        <a href="#">Pirogrammer Card Game</a>
         <div class="base_menus">
-          <a href="./main.html">홈으로</a>
-          <a href="{%url 'users:signup'%}">회원가입</a>
+          <a href="{% url 'users:main' %}">홈으로</a>
+          <a href="{% url 'users:signup' %}">회원가입</a>
         </div>
       </nav>
     </header>
     <main>
-      <div class="mainWrapper">
-        <div class="loginheader">로그인</div>
+      <form method="POST" action="{% url 'users:login' %}">
+        {% csrf_token %}
+        <div class="mainWrapper">
+          <div class="loginheader">로그인</div>
 
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+          <input type="text" name="username" placeholder="Nickname" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
 
-        <input type="submit" value="Log in" class="btn" />
+          <input type="submit" value="로그인" class="btn" />
 
-        <div class="signup"><a href="signup.html">회원가입</a></div>
+          <div class="signup">
+            <a href="{% url 'users:signup' %}">회원가입</a>
+          </div>
 
-        <div class="kakaoLogin">카카오 로그인</div>
-      </div>
+          <div class="kakaoLogin">카카오 로그인</div>
+        </div>
+      </form>
     </main>
     <footer>
       <p>피로그래밍 22기 카드게임 세션3조</p>
     </footer>
   </body>
+  <script>
+    // Django에서 전달한 login_success를 JS 변수로 설정
+    const loginSuccess = {{ login_success|default:"null" }};
+
+    if (loginSuccess === true) {
+      console.log("Login successful!");
+    } else if (loginSuccess === false) {
+      console.log("Login failed: Invalid username or password.");
+    }
+  </script>
 </html>

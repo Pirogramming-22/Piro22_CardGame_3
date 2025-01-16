@@ -1,51 +1,83 @@
-{% extends '../base/base.html' %} {% load static %} {% block head %}
-<style>
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: Inter;
-    color: #fff;
-  }
-  .title {
-    font-size: 8rem;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-  }
+{% load static %}
 
-  button {
-    background-color: #17d6b5;
-    width: 12.75rem;
-    height: 3.5rem;
-    border-radius: 1rem;
-    font-size: 2rem;
-    color: white;
-    margin: 1rem;
-  }
-</style>
-{% endblock head %} {% block base_menus %}
-<a href="{% url 'users:login' %}">로그인</a>
-<a href="{% url 'users:signup' %}">회원가입</a>
-{% endblock base_menus %} {% block content %}
-<div class="title">Piro Game</div>
-<div class="loginING">user1 님이 로그인 중</div>
-<div>
-  <button class="start">start</button>
-  <button class="list">list</button>
-</div>
-{% endblock content %} {% block js %}
-<script>
-  // 로그인 상태 여부 (예: 로컬 스토리지나 쿠키 확인)
-  const isLoggedIn = false;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/game/reset.css" />
+    <link rel="stylesheet" href="../../static/game/base.css" />
+  </head>
+  <style>
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: Inter;
+      color: #fff;
+    }
+    .title {
+      font-size: 8rem;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+    }
 
-  // 로그인 상태에 따라 loginING 요소를 숨김
-  const loginStatusElement = document.querySelector(".loginING");
-  const setList = document.querySelector(".list");
-  if (!isLoggedIn) {
-    loginStatusElement.style.display = "none";
-    setList.style.display = "none";
-  }
-</script>
-{% endblock js %}
+    button {
+      background-color: #17d6b5;
+      width: 12.75rem;
+      height: 3.5rem;
+      border-radius: 1rem;
+      font-size: 2rem;
+      color: white;
+      margin: 1rem;
+    }
+  </style>
+  <body>
+    <header>
+      <nav>
+        <a href="">Pirogrammer Card Game</a>
+        <div class="base_menus">
+          {% if user.is_authenticated %}
+          <span>{{ user.username }} 님</span>
+          <a href="/play">게임하기</a>
+          <a href="/ranking">랭킹보기</a>
+          <a href="{% url 'users:logout' %}">로그아웃</a>
+          {% else %}
+          <a href="{% url 'users:login' %}">로그인</a>
+          <a href="{% url 'users:signup' %}">회원가입</a>
+          {% endif %}
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="title">Piro Game</div>
+      <div class="loginING">
+        {% if user.is_authenticated %} {{ user.username }} 님이 로그인 중
+        {%else%}{% endif %}
+      </div>
+      <div>
+        <button class="start">start</button> <button class="list">list</button>
+      </div>
+    </main>
+    <footer>
+      <p>피로그래밍 22기 카드게임 세션3조</p>
+    </footer>
+  </body>
+  <script>
+    // 로그인 상태 여부 (예: 로컬 스토리지나 쿠키 확인)
+    const isLoggedIn = "{{ user.is_authenticated|yesno:'true,false' }}";
+    // 로그인 상태에 따라 loginING 요소를 숨김
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginStatusElement = document.querySelector(".loginING");
+      const listButton = document.querySelector(".list");
+
+      if (isLoggedIn === "false") {
+        loginStatusElement.style.display = "none";
+        listButton.style.display = "none";
+      }
+    });
+  </script>
+</html>
