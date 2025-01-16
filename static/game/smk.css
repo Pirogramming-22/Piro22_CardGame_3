@@ -1,0 +1,98 @@
+
+main {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 화면 전체 높이 */
+    margin: 0; /* 기본 여백 제거 */
+}
+
+.game-box {
+    background-color: #319B88;
+    color: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px; /* 게임 박스 너비를 줄임 */
+  }
+
+  .game-box h2 {
+    margin-bottom: 10px;
+  }
+  
+  .radio-item {
+    display: flex; /* Flexbox로 설정 */
+    align-items: center; /* 수직 가운데 정렬 */
+    margin-bottom: 20px;
+  }
+
+  input[type="radio"] {
+    appearance: auto; /* 기본 브라우저 스타일 사용 */
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  /* 라벨 스타일 */
+  label {
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  /* 라디오 버튼과 라벨을 세로로 정렬 */
+  #radioButtons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+  }
+
+
+  .defender-container {
+    display: flex; /* Flexbox로 설정 */
+    align-items: center; /* 수직 가운데 정렬 */
+    gap: 10px; /* 요소 간 간격 */
+  }
+  
+  .defender-container h2 {
+    margin: 0; /* 기본 여백 제거 */
+  }
+  
+
+  .gameAttack-container {
+    display: flex; /* Flexbox로 설정 */
+    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    gap: 10px;
+    margin: 10px 10px;
+  }
+
+  #defender-select {
+    margin-bottom: 5px;
+  }
+
+  .button-container {
+    gap: 10px; /* 요소 간 간격 */
+    margin-top: 20px;
+  }
+
+  .game-button {
+    background-color: white;
+    color: #319B88;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%; /* 버튼 너비를 게임 박스에 맞게 설정 */
+    max-width: 200px; /* 버튼의 최대 너비 */
+  }
+  
+  game-button:hover {
+    background-color: lightgrey;
+  }
+
+  
