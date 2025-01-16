@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
-class User(models.Model):
+class User(AbstractUser):
   user=models.CharField(max_length=50,unique=True)
   score=models.IntegerField(default=0)
 
