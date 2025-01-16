@@ -14,3 +14,8 @@ def game_list(request):
 #         'users':users,
 #     }
 #     return render(request, 'game/rank.html', context)
+
+def smk_Attack(request):
+    return render(request, 'smk_gameStart/smk_Attack.html')
+def smk_CounterAttack(request):
+    return render(request, 'smk_gameStart/smk_CounterAttack.html')
