@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load static %}
 
 <!DOCTYPE html>
@@ -9,6 +10,11 @@
     <link rel="stylesheet" href="../../static/game/reset.css" />
     <link rel="stylesheet" href="../../static/game/base.css" />
   </head>
+=======
+{% extends '../base/base.html'%}
+{% load static%}
+{%block head%}
+>>>>>>> cd2a166e6f860be504767ef9f05b4b48694ba451
   <style>
     main {
       display: flex;
@@ -35,6 +41,7 @@
       margin: 1rem;
     }
   </style>
+<<<<<<< HEAD
   <body>
     <header>
       <nav>
@@ -46,16 +53,22 @@
       </nav>
     </header>
     <main>
+=======
+{%endblock head%}
+{% block base_menus%}
+          <a href="">로그인</a>
+          <a href="">회원가입</a>
+{%endblock base_menus%}
+
+{% block content %}
+>>>>>>> cd2a166e6f860be504767ef9f05b4b48694ba451
       <div class="title">Piro Game</div>
       <div class="loginING">user1 님이 로그인 중</div>
       <div>
         <button class="start">start</button> <button class="list">list</button>
       </div>
-    </main>
-    <footer>
-      <p>피로그래밍 22기 카드게임 세션3조</p>
-    </footer>
-  </body>
+{% endblock content %}
+{% block js%}
   <script>
     // 로그인 상태 여부 (예: 로컬 스토리지나 쿠키 확인)
     const isLoggedIn = false;
@@ -68,4 +81,4 @@
       setList.style.display = "none";
     }
   </script>
-</html>
+{% endblock js%}

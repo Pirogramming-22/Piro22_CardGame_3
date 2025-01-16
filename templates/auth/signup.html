@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/game/reset.css" />
-    <link rel="stylesheet" href="../../static/game/base.css" />
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="../base.css" />
   </head>
   <style>
     main {
@@ -74,10 +74,10 @@
   <body>
     <header>
       <nav>
-        <a href="/">Pirogrammer Card Game</a>
+        <a href="">Pirogrammer Card Game</a>
         <div class="base_menus">
-          <a href="{% url 'users:main' %}">홈으로</a>
-          <a href="{% url 'users:login' %}">로그인</a>
+          <a href="">홈으로</a>
+          <a href="">로그인</a>
         </div>
       </nav>
     </header>
@@ -103,9 +103,7 @@
           <input type="submit" value="Sign up" class="btn" />
         </form>
       </div>
+      {% endblock content %}
     </main>
-    <footer>
-      <p>피로그래밍 22기 카드게임 세션3조</p>
-    </footer>
   </body>
 </html>
