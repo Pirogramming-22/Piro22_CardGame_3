@@ -35,7 +35,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -47,7 +47,14 @@ TEMPLATES = [
         },
     },
 ]
+STATIC_URL = '/static/'
+AUTH_USER_MODEL = 'users.CustomUser'
 
+
+# 정적 파일 경로 설정
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Django 3.2 이상
+]
 WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
