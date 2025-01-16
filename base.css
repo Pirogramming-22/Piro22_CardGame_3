@@ -4,38 +4,52 @@
     --image_background: rgba(51, 51, 51, 0.5);
   }
 
-  header, footer {
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+footer, header {
     background-color: var(--image_background);
+    margin: 0;
     color: var(--white);
     width: 100%;
     padding: 20px 0;
     position: fixed;
     left: 0;
-  }
+}
 
-  header {
+header {
     top: 0;
-  }
+}
 
-  footer {
+footer {
     bottom: 0;
     text-align: center;
-  }
+}
 
-  nav {
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-inline: 40px;
-  }
+}
 
-  .base_menus {
+.base_menus {
     display: flex;
     gap: 40px;
-  }
+}
 
-  main {
+main {
     flex: 1;
+    background-color: var(--image_background);
     padding-top: 60px; /* Header height compensation */
     padding-bottom: 40px; /* Footer height compensation */
-  }
+}
