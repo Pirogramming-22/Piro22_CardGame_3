@@ -60,6 +60,12 @@ def respond_game(request, game_id):
         'random_numbers': random_numbers,  # 랜덤 숫자
     })
 
+def cancel_game(request, game_id):
+    game = Game.objects.get(id=game_id)
+    if game.attacker.username == request.user.username:
+        game.delete()
+    return redirect('game:game_list', request.user.id)
+
 def respondSave(request, game_id):
     if request.method == 'POST':
         game = Game.objects.get(id=game_id)

@@ -8,6 +8,7 @@ urlpatterns = [
     path('attackSave/', views.attackSave, name='attackSave'),  # 게임 생성 (공격)
     # path('<int:game_id>/', views.game_detail, name='game_detail'),  # 특정 게임 상세 보기
     path('list/<int:user_id>/', views.game_list, name='game_list'),  # 게임 리스트 보기
+    path('cancel/<int:game_id>/', views.cancel_game, name='cancel_game'),
     path('gameInfo1/', views.gameInfo1),
     path('gameInfo2/', views.gameInfo2),
     path('gameInfo3/', views.gameInfo3),
