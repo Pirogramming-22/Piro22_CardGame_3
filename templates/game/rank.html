@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'game/rank.css' %}">
+    <style>
+        main {
+          padding-top: 60px;
+          padding-bottom: 40px;
+          display: flex;
+          align-items: center;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+        <div class="rank_container">
+            <h4 class="rank_title">Piro 명예의 전당</h4>
+            <div class="ranking">
+                <div class="first">
+                    {% if users.0 %}
+                        <p>🥇{{ users.0.username }}🥇</p>
+                        <p>{{ users.0.score }}</p>
+                    {% else %}
+                        <p>No Data</p>
+                    {% endif %}
+                    <div class="bar" id="bar1">1</div>
+                </div>
+                <div class="second">
+                    {% if users.1 %}
+                        <p>🥈{{ users.1.username }}🥈</p>
+                        <p>{{ users.1.score }}</p>
+                    {% else %}
+                        <p>No Data</p>
+                    {% endif %}
+                    <div class="bar" id="bar2">2</div>
+                </div>
+                <div class="third">
+                    {% if users.2 %}
+                        <p>🥉{{ users.2.username }}🥉</p>
+                        <p>{{ users.2.score }}</p>
+                    {% else %}
+                        <p>No Data</p>
+                    {% endif %}
+                    <div class="bar" id="bar3">3</div>
+                </div>
+            </div>
+            <a href="{%url 'game:game_list' user.id%}">
+                <button class="list_button">전적 목록</button>
+            </a>
+        </div>
+    {% endblock %}
+</body>
+</html>

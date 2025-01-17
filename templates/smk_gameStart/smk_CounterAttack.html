@@ -1,0 +1,29 @@
+{% extends '../base/base.html'%}
+{% load static%}
+{% block head %}
+  <link rel="stylesheet" href="{%static 'game/smk.css'%}">
+{% endblock head %}
+{% block content %}
+    <form method="POST" action="{%url 'game:respondSave' game.id%}">
+      {% csrf_token %}      
+
+    <section class="game-box">
+      <div class="gameAttack-defender">
+        <h2>반격할 카드: </h2>
+          <div id="radioButtons">
+            {% for number in random_numbers %}
+              <div class="radio-item">
+                <input type="radio" name="card" value="{{ number }}" id="card{{ number }}">
+                <label for="card{{ number }}">{{ number }}</label>
+              </div>
+            {% endfor %}
+          </div>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class="game-button" style="color:#319B88">Attack!</button>
+      </div>
+    </section>
+    
+    </form>
+{% endblock content%}

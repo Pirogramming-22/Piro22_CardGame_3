@@ -1,0 +1,34 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piro22_CardGame_3</title>
+    <link rel="stylesheet" href="{% static 'game/reset.css'%}" />
+    <link rel="stylesheet" href="{% static 'game/base.css'%}" />
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{%url 'users:main' %}">Pirogrammer Card Game</a>
+        <div class="base_menus">
+          {% block base_menus%}
+          {% if user.is_authenticated %}
+          <span>{{ user.username }} 님</span>
+          <a href="{%url 'game:create_game' %} ">게임하기</a>
+          <a href="{% url 'game:rankings' %}">랭킹보기</a>
+          <a href="{% url 'users:logout' %}">로그아웃</a>
+          {% endif %}
+          {%endblock base_menus%}
+        </div>
+      </nav>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+    <footer>
+      <p>피로그래밍 22기 카드게임 세션3조</p>
+    </footer>
+  </body>
+  {% block js%} {% endblock js%}
+</html>

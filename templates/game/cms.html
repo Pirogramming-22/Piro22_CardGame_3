@@ -1,0 +1,75 @@
+{% extends '../base/base.html'%}
+{% load static%}
+{% block head %}
+  <link rel="stylesheet" href="{%static 'game/cms.css'%}">
+{% endblock head %}
+{% block content %}
+    <div id="cms-main-container">
+      <div>
+        <h2 id="History-list">History List</h2>
+      </div>
+      <div id="now-player">
+        <p>현재 플레이어 <span> : {{user.username}}</span></p>
+      </div>
+      <div id="game-list">
+        <table>
+          <thead class="gameTbHeader">
+            <tr>
+              <th>게임번호</th>
+              <th>플레이어</th>
+              <th>게임상황</th>
+              <th>게임정보</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for game in games%}
+            <tr class="gameTbList">
+              <td>{{game.id}}</td>
+              <td>{{game.attacker}} vs {{game.defender}}</td>
+              <td>
+                {% if game.winner == None and not game.defender_card%}
+                  {%if game.attacker.username == user.username%} {% comment %}로그인한 유저가 공격하고 게임 안끝났을 때{% endcomment %}
+                    <span class="gameProgress">
+                      진행중...<a href="{%url 'game:cancel_game' game.id%}">개임취소</a>
+                    </span>
+            
+                  {% else %}
+                    <span class="counterAttack">
+                      <a href="{%url 'game:respond_game' game.id%}">CounterAttack</a>
+                    </span>
+                  {% endif %}
+                {% else %}
+                  <span class="">
+                    결과: 
+                    {% if game.winner.username == user.username %}
+                      승리
+                    {% elif game.winner.username == None %}
+                      무승부
+                    {% else %}
+                      패배
+                    {% endif %}
+                  </span>
+                {% endif %}
+              </td>
+              <td>
+                <a href="
+                {% if game.winner == None and not game.defender_card%}
+                    {%if game.attacker.username == user.username%} 
+                      {% url 'game:gameInfo1' game.id %}
+                    {% else %} 
+                      {% url 'game:gameInfo2' game.id %}
+                    {% endif %}
+                  {% else %}
+                    {% url 'game:gameInfo3' game.id %}
+                  {% endif %}
+                ">
+                  <button class="gameTbBtn">게임 정보</button>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+      </div>
+    </div>
+{% endblock content%}

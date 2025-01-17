@@ -1,0 +1,23 @@
+{% extends '../base/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'game/gameInfo.css' %}">
+{% endblock head %}
+{% block content %}
+<section class="game-box">
+  <h2>{{ game.id }} - {{ attacker }} VS {{ defender }}</h2>
+  <p>진행중...</p>
+  <ul class="game-stats">
+    <li><strong>나:</strong> {{ game.attacker_card }}</li>
+    
+  </ul>
+  <div class="game-actions">
+    <a href="{% url 'game:cancel_game' game.id %}">
+      <button>게임취소</button>
+    </a>
+    <a href="{% url 'game:game_list' request.user.id %}">
+      <button>전적목록</button>
+    </a>
+  </div>
+</section>
+{% endblock content %}
