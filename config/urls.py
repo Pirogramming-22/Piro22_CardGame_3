@@ -27,6 +27,7 @@ urlpatterns = [
     path('gameInfo3/', views.gameInfo3),
     path('smk_Attack', views.smk_Attack),
     path('smk_CounterAttack', views.smk_CounterAttack),
+      path('accounts/', include('allauth.urls')),
 ]
 
 
