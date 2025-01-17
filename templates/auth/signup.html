@@ -1,97 +1,86 @@
-{% extends 'base/base.html' %}
-{%load static%}
-{%block head%}
-  <style>
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .mainWrapper {
-      width: 20rem;
-      height: 25rem;
-      margin: auto;
-      font-size: 15px;
-      background-color: white;
-      border-radius: 1rem;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
-        0 15px 12px rgba(0, 0, 0, 0.22);
-    }
-    .loginheader {
-      margin-bottom: 2.4rem;
-    }
-    input[type="text"],
-    input[type="password"] {
-      width: 15rem;
-      height: 32px;
-      font-size: 15px;
-      border: 0;
-      border-radius: 15px;
-      outline: none;
-      padding-left: 10px;
-      background-color: rgb(233, 233, 233);
-      margin-bottom: 1.3rem;
-    }
-    .btn {
-      width: 13rem;
-      height: 2.4rem;
-      font-size: 15px;
-      border: 0;
-      border-radius: 15px;
-      outline: none;
-      padding-left: 10px;
-      background-color: #17d6b5;
-      cursor: pointer;
-    }
+{% extends 'base/base.html' %} {%load static%} {%block head%}
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainWrapper {
+    width: 20rem;
+    height: 25rem;
+    margin: auto;
+    font-size: 15px;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+  .loginheader {
+    margin-bottom: 2.4rem;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 15rem;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 1.3rem;
+  }
+  .btn {
+    width: 13rem;
+    height: 2.4rem;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: #17d6b5;
+    cursor: pointer;
+  }
 
-    .btn:active {
-      width: 13rem;
-      height: 2.4rem;
-      font-size: 15px;
-      border: 0;
-      border-radius: 15px;
-      outline: none;
-      padding-left: 10px;
-      cursor: pointer;
-    }
+  .btn:active {
+    width: 13rem;
+    height: 2.4rem;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    cursor: pointer;
+  }
 
-    .signup,
-    .kakaoLogin {
-      margin: 0.3rem;
-      cursor: pointer;
-    }
-  </style>
-{%endblock head%}
-{%block base_menus%}
-          <a href="{% url 'users:main' %}">홈으로</a>
-          <a href="{% url 'users:login' %}">로그인</a>
- {%endblock base_menus%}
-
-{% block content %}
-      <div class="mainWrapper">
-        <form method="POST" action="{% url 'users:signup' %}">
-          {% csrf_token %}
-          <div class="loginheader">회원가입</div>
-          <input type="text" name="email" placeholder="Email" required />
-          <input type="text" name="username" placeholder="Nickname" required />
-          <input
-            type="password"
-            name="password1"
-            placeholder="Password"
-            required
-          />
-          <input
-            type="password"
-            name="password2"
-            placeholder="Check your Password"
-            required
-          />
-          <input type="submit" value="Sign up" class="btn" />
-        </form>
-      </div>
+  .signup,
+  .kakaoLogin {
+    margin: 0.3rem;
+    cursor: pointer;
+  }
+</style>
+{%endblock head%} {%block base_menus%}
+<a href="{% url 'users:main' %}">홈으로</a>
+<a href="{% url 'users:login' %}">로그인</a>
+{%endblock base_menus%} {% block content %}
+<div class="mainWrapper">
+  <form method="POST" action="{% url 'users:signup' %}">
+    {% csrf_token %}
+    <div class="loginheader">회원가입</div>
+    <input type="text" name="email" placeholder="Email" required />
+    <input type="text" name="username" placeholder="Nickname" required />
+    <input type="password" name="password1" placeholder="Password" required />
+    <input
+      type="password"
+      name="password2"
+      placeholder="Check your Password"
+      required
+    />
+    <input type="submit" value="Sign up" class="btn" />
+  </form>
+</div>
 {% endblock content %}

@@ -1,125 +1,104 @@
-{% extends 'base/base.html' %}
-{%load static%} 
-{% load socialaccount %}
-{% block head %}
-  <style>
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .mainWrapper {
-      width: 20rem;
-      height: 22rem;
-      margin: auto;
-      font-size: 15px;
-      background-color: white;
-      border-radius: 1rem;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
-        0 15px 12px rgba(0, 0, 0, 0.22);
-    }
-    .loginheader {
-      margin-bottom: 3rem;
-    }
-    input[type="text"],
-    input[type="password"] {
-      width: 15rem;
-      height: 32px;
-      font-size: 15px;
-      border: 0;
-      border-radius: 15px;
-      outline: none;
-      padding-left: 10px;
-      background-color: rgb(233, 233, 233);
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      width: 13rem;
-      height: 2.4rem;
-      font-size: 15px;
-      border: 0;
-      border-radius: 15px;
-      outline: none;
-      padding-left: 10px;
-      background-color: #17d6b5;
-      cursor: pointer;
-    }
-
-    .btn:active {
-      width: 13rem;
-      height: 2.4rem;
-      font-size: 15px;
-      border: 0;
-      border-radius: 15px;
-      outline: none;
-      padding-left: 10px;
-      cursor: pointer;
-    }
-
-    .signup,
-    .kakaoLogin {
-      margin: 0.3rem;
-      font-size: 12px;
-      color: darkgray;
-      text-decoration-line: none;
-      cursor: pointer;
-    }
-    .kakaoLogin {
-      color: #a69316;
-    }
-  </style>
-  {% endblock %}
-{% block base_menus %}
-          <a href="{% url 'users:main' %}">홈으로</a>
-          <a href="{% url 'users:signup' %}">회원가입</a>
-{% endblock base_menus %}
-{%block content%}
-      <form method="POST" action="{% url 'users:login' %}">
-        {% csrf_token %}
-        <div class="mainWrapper">
-          <div class="loginheader">로그인</div>
-
-          <input type="text" name="username" placeholder="Nickname" required />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          />
-
-          <input type="submit" value="로그인" class="btn" />
-
-          <div class="signup">
-            <a href="{% url 'users:signup' %}">회원가입</a>
-          </div>
-
-          <button
-            type="button"
-            {%comment%}onclick="location.href = '{% provider_login_url 'kakao' %}'" {%endcomment%}
-          >
-            <img
-              class="kakao"
-              src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-              alt=""
-            />
-          </button>
-        </div>
-      </form>
-    {% endblock content%}
-  {% block js %}
-  <script>
-    // Django에서 전달한 login_success를 JS 변수로 설정
-    const loginSuccess = {{ login_success|default:"null" }};
-
-    if (loginSuccess === true) {
-      console.log("Login successful!");
-    } else if (loginSuccess === false) {
-      console.log("Login failed: Invalid username or password.");
-    }
-  </script>
-  {% endblock js %}
+{% extends 'base/base.html' %} {% load static %} {% load socialaccount %}
+{%block head %}
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainWrapper {
+    width: 20rem;
+    height: 22rem;
+    margin: auto;
+    font-size: 15px;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+  .loginheader {
+    margin-bottom: 3rem;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 15rem;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 1rem;
+  }
+  .btn {
+    width: 13rem;
+    height: 2.4rem;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    background-color: #17d6b5;
+    cursor: pointer;
+  }
+  .signup {
+    margin: 0.3rem;
+    font-size: 12px;
+    color: darkgray;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .naverLogin {
+    background-color: #03c75a;
+    width: 12rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+{% endblock head %} {% block base_menus %}
+<a href="{% url 'users:main' %}">홈으로</a>
+<a href="{% url 'users:signup' %}">회원가입</a>
+{% endblock base_menus %} {% block content %}
+<form method="POST" action="{% url 'users:login' %}">
+  {% csrf_token %}
+  <div class="mainWrapper">
+    <div class="loginheader">로그인</div>
+    <input type="text" name="username" placeholder="Nickname" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <input type="submit" value="로그인" class="btn" />
+    <div class="signup">
+      <a href="{% url 'users:signup' %}">회원가입</a>
+    </div>
+    <button
+      class="naverLogin"
+      type="button"
+      onclick="location.href = '{% provider_login_url 'naver' %}'"
+    >
+      <img
+        class="naver"
+        src="https://www.naver.com/favicon.ico"
+        alt="Naver Login"
+      />
+      네이버 로그인
+    </button>
+  </div>
+</form>
+{% endblock content %} {% block js %}
+<script>
+  const loginSuccess = {{ login_success|default:"null" }};
+  if (loginSuccess === true) {
+    console.log("Login successful!");
+  } else if (loginSuccess === false) {
+    console.log("Login failed: Invalid username or password.");
+  }
+</script>
+{% endblock js %}

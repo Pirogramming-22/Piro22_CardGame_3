@@ -6,7 +6,7 @@
 {% block content %}
 <!-- 구현 -->
 <section class="game-box">
-  <h2>{{ game.id }} - {{ attacker.username }} VS {{ defender.username }}</h2>
+  <h2>{{ game.id }} - {{ attacker }} VS {{ defender }}</h2>
   <p>
     {% if game.is_greater_wins %}
       숫자가 큰 사람이 이깁니다.

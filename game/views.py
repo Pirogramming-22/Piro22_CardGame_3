@@ -15,8 +15,13 @@ def gameInfo1(request, game_id):
     return render(request, 'gameInfo/gameInfo1.html', context)
 
 def gameInfo2(request, game_id):
-    game = get_object_or_404(Game, id=game_id)  # game_id로 게임 객체를 가져옴
-    return render(request, 'gameInfo/gameInfo2.html', {'game': game})
+    game = get_object_or_404(Game, id=game_id)
+    context = {
+        'game': game,
+        'attacker': game.attacker.username,
+        'defender': game.defender.username,
+    }  # game_id로 게임 객체를 가져옴
+    return render(request, 'gameInfo/gameInfo2.html', context)
 
 def gameInfo3(request, game_id):
     game = get_object_or_404(Game, id=game_id)

@@ -16,10 +16,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
     'users',
     'game',
 ]
@@ -87,12 +88,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
  
 ]
-SITE_ID = 1
+SITE_ID = 2
+
+
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
-LOGIN_REDIRECT_URL = 'main'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
-ACCOUNT_LOGOUT_ON_GET = True 
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
+SOCIALACCOUNT_PROVIDERS = {
+
+    'naver': {'APP': {
+                        'client_id': 'H9gjulGnlto0mWaOOJKf',
+                        'secret': '5YqHd9qmeL',
+                        'key': ''
+                }},
+}
 
 LANGUAGE_CODE = 'ko'
 
