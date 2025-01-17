@@ -42,10 +42,20 @@
     </li>
     <li>
       점수: 
-      {% if request.user == attacker %}
-        {{ attacker_card }}
+      {% if result == 0 %}
+        0
+      {% elif request.user == attacker %}
+        {% if result == 1 %}
+          {{ attacker_card }}
+        {% else %}
+          -{{ attacker_card }}
+        {% endif %}
       {% elif request.user == defender %}
-        {{ loser_score }}
+        {% if result == 2 %}
+          {{ defender_card }}
+        {% else %}
+          -{{ defender_card }}
+        {% endif %}
       {% endif %}
     </li>
 </ul>
