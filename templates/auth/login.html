@@ -51,8 +51,17 @@
     text-decoration: none;
     cursor: pointer;
   }
-  .kakaoLogin {
-    color: #a69316;
+  .naverLogin {
+    background-color: #03c75a;
+    width: 12rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
 {% endblock head %} {% block base_menus %}
@@ -70,14 +79,16 @@
       <a href="{% url 'users:signup' %}">회원가입</a>
     </div>
     <button
+      class="naverLogin"
       type="button"
-      onclick="location.href = '{% provider_login_url 'kakao' %}'"
+      onclick="location.href = '{% provider_login_url 'naver' %}'"
     >
       <img
-        class="kakao"
-        src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-        alt="Kakao Login"
+        class="naver"
+        src="https://www.naver.com/favicon.ico"
+        alt="Naver Login"
       />
+      네이버 로그인
     </button>
   </div>
 </form>
