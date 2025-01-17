@@ -47,12 +47,12 @@
                 <a href="
                   {% if game.result == None %}
                     {%if game.attacker.username == user.username%} 
-                      {% url 'game:gameInfo1' %}
+                      {% url 'game:gameInfo1' game.id %}
                     {% else %} 
-                      {% url 'game:gameInfo2' %}
+                      {% url 'game:gameInfo2' game.id %}
                     {% endif %}
                   {% else %}
-                    {% url 'game:gameInfo3' %}
+                    {% url 'game:gameInfo3' game.id %}
                   {% endif %}
                 ">
                   <button class="gameTbBtn">게임 정보</button>

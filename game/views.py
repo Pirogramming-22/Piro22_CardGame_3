@@ -4,14 +4,18 @@ import random
 from .models import Game
 from django.db.models import Q
 # Create your views here.
-def gameInfo1(request):
-    return render(request, 'gameInfo/gameInfo1.html')
+def gameInfo1(request, game_id):
+    game = get_object_or_404(Game, id=game_id)  # game_id로 게임 객체를 가져옴
+    return render(request, 'gameInfo/gameInfo1.html', {'game': game})
 
-def gameInfo2(request):
-    return render(request, 'gameInfo/gameInfo2.html')
+def gameInfo2(request, game_id):
+    game = get_object_or_404(Game, id=game_id)  # game_id로 게임 객체를 가져옴
+    return render(request, 'gameInfo/gameInfo2.html', {'game': game})
 
-def gameInfo3(request):
-    return render(request, 'gameInfo/gameInfo3.html')
+def gameInfo3(request, game_id):
+    game = get_object_or_404(Game, id=game_id)  # game_id로 게임 객체를 가져옴
+    return render(request, 'gameInfo/gameInfo3.html', {'game': game})
+
 
 def create_game(request):
     defenders = CustomUser.objects.exclude(id=request.user.id)

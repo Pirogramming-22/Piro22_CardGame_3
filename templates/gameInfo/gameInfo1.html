@@ -7,7 +7,9 @@
   <p>진행중...</p>
   <p>나: 6</p>
   <div class="game-actions">
-    <button>게임취소</button>
+    <a href="{% url 'game:cancel_game' game.id %}">
+      <button>게임취소</button>
+    </a>
     <button>천적목록</button>
   </div>
 </section>
