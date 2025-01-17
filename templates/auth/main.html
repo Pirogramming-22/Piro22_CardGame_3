@@ -1,13 +1,6 @@
+{% extends 'base/base.html' %}
 {%load static%}
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'game/reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'game/base.css' %}" />
+{%block head%}
     <style>
       main {
         display: flex;
@@ -47,12 +40,8 @@
         color: #aaa;
       }
     </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="#">Pirogrammer Card Game</a>
-        <div class="base_menus">
+{%endblock head%}
+{%block base_menus%}
           {% if user.is_authenticated %}
           <span>{{ user.username }} 님</span>
           <a href="/play">게임하기</a>
@@ -62,10 +51,8 @@
           <a href="{% url 'users:login' %}">로그인</a>
           <a href="{% url 'users:signup' %}">회원가입</a>
           {% endif %}
-        </div>
-      </nav>
-    </header>
-    <main>
+{%endblock base_menus%}
+{%block content%}
       <div class="title">Piro Game</div>
       {% if user.is_authenticated %}
       <div class="loginING">{{ user.username }} 님이 로그인 중</div>
@@ -76,15 +63,13 @@
         >
           start
         </button>
-        <button class="list" onclick="window.location.href=''">list</button>
+        <button class="list" onclick="window.location.href='{% url 'game:game_list' user.id%}'">list</button>
       </div>
       {%else %}
       <button class="start" onclick="loginAlert()">start</button>
       {% endif %}
-    </main>
-    <footer>
-      <p>피로그래밍 22기 카드게임 세션3조</p>
-    </footer>
+ {%endblock content%}
+ {%block js%}
     <script>
       const isLoggedIn = "{{ user.is_authenticated|yesno:'true,false' }}";
 
@@ -102,5 +87,4 @@
         }
       });
     </script>
-  </body>
-</html>
+{%endblock js%}
