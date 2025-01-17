@@ -5,16 +5,13 @@
 {% endblock head %}
 {% block content %}
     <section class="game-box">
-      
-      <!-- url 우선 주석처리해두었습니다 
-      <form method="POST" action="">
-      -->
+      <form method="POST" action="{%url 'game:attackSave' %}">
 
         {% csrf_token %}      
 
         <div class="gameAttack-defender">
           <h2>내가 고른 카드: </h2>
-          <form id="cardForm">
+          <div id="cardForm">
             <div id="radioButtons">
               {% for number in random_numbers %}
                 <div class="radio-item">
@@ -23,7 +20,7 @@
                 </div>
               {% endfor %}
             </div>
-          </form>
+          </div>
         </div>
         
       <div class="gameAttack-container">
