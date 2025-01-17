@@ -4,14 +4,41 @@ import random
 from .models import Game
 from django.db.models import Q
 # Create your views here.
-def gameInfo1(request):
-    return render(request, 'gameInfo/gameInfo1.html')
 
-def gameInfo2(request):
-    return render(request, 'gameInfo/gameInfo2.html')
+def gameInfo1(request, game_id):
+    game = get_object_or_404(Game, id=game_id)  # game_id로 게임 객체를 가져옴
+    context = {
+        'game': game,
+        'attacker': game.attacker.username,
+        'defender': game.defender.username,
+    }
+    return render(request, 'gameInfo/gameInfo1.html', context)
 
-def gameInfo3(request):
-    return render(request, 'gameInfo/gameInfo3.html')
+def gameInfo2(request, game_id):
+    game = get_object_or_404(Game, id=game_id)  # game_id로 게임 객체를 가져옴
+    return render(request, 'gameInfo/gameInfo2.html', {'game': game})
+
+def gameInfo3(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+
+    # 결과 처리
+    result = game_result(game.attacker_card, game.defender_card, game.is_greater_wins)
+
+    # 점수 계산
+    score = abs(game.attacker_card - game.defender_card) if game.defender_card is not None else None
+
+    context = {
+        'game': game,
+        'attacker': game.attacker,
+        'defender': game.defender,
+        'attacker_card': game.attacker_card,
+        'defender_card': game.defender_card,
+        'result': result,
+        'winner': game.winner,
+        'score': score,  # 점수를 컨텍스트에 추가
+    }
+    return render(request, 'gameInfo/gameInfo3.html', context)
+
 
 def create_game(request):
     defenders = CustomUser.objects.exclude(id=request.user.id)
@@ -59,6 +86,12 @@ def respond_game(request, game_id):
         'game': game,  # 게임 객체
         'random_numbers': random_numbers,  # 랜덤 숫자
     })
+
+def cancel_game(request, game_id):
+    game = Game.objects.get(id=game_id)
+    if game.attacker.username == request.user.username:
+        game.delete()
+    return redirect('game:game_list', request.user.id)
 
 def respondSave(request, game_id):
     if request.method == 'POST':

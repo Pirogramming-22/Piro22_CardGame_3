@@ -5,8 +5,10 @@
 <section class="game-box">
   <h2>6 - user1 VS user3</h2>
   <div class="game-actions">
-    <button>대응하기</button>
-    <button>천적목록</button>
+    <a href="{% url 'game:respond_game' game.id %}">
+      <button>반격하기</button>
+    </a>
+    <button>전적목록</button>
   </div>
 </section>
 <!-- 구현 -->
