@@ -52,7 +52,7 @@
               </td>
               <td>
                 <a href="
-                  {% if game.result == None %}
+                  {% if game.winner == None %}
                     {%if game.attacker.username == user.username%} 
                       {% url 'game:gameInfo1' game.id %}
                     {% else %} 
