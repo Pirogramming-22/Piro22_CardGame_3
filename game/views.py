@@ -15,8 +15,13 @@ def gameInfo1(request, game_id):
     return render(request, 'gameInfo/gameInfo1.html', context)
 
 def gameInfo2(request, game_id):
-    game = get_object_or_404(Game, id=game_id)  # game_id로 게임 객체를 가져옴
-    return render(request, 'gameInfo/gameInfo2.html', {'game': game})
+    game = get_object_or_404(Game, id=game_id)
+    context = {
+        'game': game,
+        'attacker': game.attacker.username,
+        'defender': game.defender.username,
+    }  # game_id로 게임 객체를 가져옴
+    return render(request, 'gameInfo/gameInfo2.html', context)
 
 def gameInfo3(request, game_id):
     game = get_object_or_404(Game, id=game_id)
@@ -25,17 +30,17 @@ def gameInfo3(request, game_id):
     result = game_result(game.attacker_card, game.defender_card, game.is_greater_wins)
 
     # 점수 계산
-    score = abs(game.attacker_card - game.defender_card) if game.defender_card is not None else None
-
+    # winner_score = game.attacker_card
+    # loser_score = game.defender_card
     context = {
         'game': game,
         'attacker': game.attacker,
         'defender': game.defender,
         'attacker_card': game.attacker_card,
         'defender_card': game.defender_card,
+        'loser_score':  - game.defender_card,
         'result': result,
         'winner': game.winner,
-        'score': score,  # 점수를 컨텍스트에 추가
     }
     return render(request, 'gameInfo/gameInfo3.html', context)
 
@@ -102,17 +107,16 @@ def respondSave(request, game_id):
             attacker = CustomUser.objects.get(id=game.attacker.id)
             defender = CustomUser.objects.get(id=game.defender.id)
             result = game_result(game.attacker_card, game.defender_card, game.is_greater_wins)
-            score = abs(game.attacker_card - game.defender_card)
             if result == 0:
                 game.winner = None
             elif result == 1:
                 game.winner = attacker
-                attacker.score += score
-                defender.score -= score
+                attacker.score += game.attacker_card
+                defender.score -= game.defender_card
             else:
                 game.winner = defender
-                defender.score += score
-                attacker.score -= score
+                defender.score += game.defender_card
+                attacker.score -= game.attacker_card
             attacker.save()
             defender.save()
             game.save()
