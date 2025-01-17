@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from users.models import CustomUser
 import random
 from .models import Game
-
+from django.db.models import Q
 # Create your views here.
 def gameInfo1(request):
     return render(request, 'gameInfo/gameInfo1.html')
@@ -22,10 +22,12 @@ def create_game(request):
         'random_numbers': random_numbers,
     })
 
-def game_list(request, pk):
-    user = CustomUser.objects.get(id=pk)
+def game_list(request, user_id):
+    user = CustomUser.objects.get(id=user_id)
+    games = Game.objects.filter(Q(attacker=user) | Q(defender=user))
     context = {
         'user': user,
+        'games': games,
     }
     return render(request, 'game/cms.html', context)
 

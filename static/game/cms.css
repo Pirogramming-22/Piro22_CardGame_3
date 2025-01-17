@@ -52,3 +52,11 @@
   padding: 10px;
   width: 100%;
 }
+.gameProgress a{
+  background-color: var(--white);
+  color: var(--header);
+  border: 1px solid var(--header);
+  border-radius: 8px;
+  font-size: 15px;
+  padding: 5px;
+}
