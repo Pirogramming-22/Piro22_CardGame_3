@@ -8,6 +8,14 @@
     <title>Document</title>
     {% block head %}
     <link rel="stylesheet" href="{% static 'game/rank.css' %}">
+    <style>
+        main {
+          padding-top: 60px;
+          padding-bottom: 40px;
+          display: flex;
+          align-items: center;
+        }
+    </style>
     {% endblock %}
 </head>
 <body>
@@ -17,7 +25,7 @@
             <div class="ranking">
                 <div class="first">
                     {% if users.0 %}
-                        <p>{{ users.0.username }}</p>
+                        <p>🥇{{ users.0.username }}🥇</p>
                         <p>{{ users.0.score }}</p>
                     {% else %}
                         <p>No Data</p>
@@ -26,7 +34,7 @@
                 </div>
                 <div class="second">
                     {% if users.1 %}
-                        <p>{{ users.1.username }}</p>
+                        <p>🥈{{ users.1.username }}🥈</p>
                         <p>{{ users.1.score }}</p>
                     {% else %}
                         <p>No Data</p>
@@ -35,7 +43,7 @@
                 </div>
                 <div class="third">
                     {% if users.2 %}
-                        <p>{{ users.2.username }}</p>
+                        <p>🥉{{ users.2.username }}🥉</p>
                         <p>{{ users.2.score }}</p>
                     {% else %}
                         <p>No Data</p>
