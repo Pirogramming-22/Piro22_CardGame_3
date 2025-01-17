@@ -32,6 +32,7 @@
 
 .ranking p {
     color: var(--white);
+    width: 500px;
 }
 
 .ranking > div {
@@ -104,3 +105,4 @@
 .list_button:hover {
     background-color: gray;
 }
+
