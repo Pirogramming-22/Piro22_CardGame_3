@@ -59,7 +59,8 @@
         {%else%}{% endif %}
       </div>
       <div>
-        <button class="start">start</button> <button class="list">list</button>
+        <button class="start" onclick="window.location.href='{% url 'game:create_game' %}'">start</button> 
+        <button class="list" onclick="window.location.href='{% url 'game:game_list' user.id %}'">list</button>
       </div>
     </main>
     <footer>

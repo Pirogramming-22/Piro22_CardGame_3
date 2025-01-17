@@ -22,6 +22,20 @@ def create_game(request):
         'random_numbers': random_numbers,
     })
 
+def attackSave(request):
+    if request.method == 'POST':
+        defender_id = request.POST.get('defender')
+        defender = CustomUser.objects.get(id=defender_id)
+        attacker = request.user
+        selected_card = request.POST.get('card')
+        is_greater_wins = random.choice([True, False])
+        
+        
+        if defender and attacker and selected_card:
+            new_game = Game(attacker=attacker, defender=defender, attacker_card=selected_card, is_greater_wins=is_greater_wins)
+            game = new_game.save()
+            return redirect('game:game_list', attacker.id)
+
 def game_list(request, user_id):
     user = CustomUser.objects.get(id=user_id)
     games = Game.objects.filter(Q(attacker=user) | Q(defender=user))
@@ -45,3 +59,37 @@ def respond_game(request, game_id):
         'game': game,  # 게임 객체
         'random_numbers': random_numbers,  # 랜덤 숫자
     })
+
+def respondSave(request, game_id):
+    if request.method == 'POST':
+        game = Game.objects.get(id=game_id)
+        if game.defender == request.user:
+            game.defender_card = int(request.POST.get('card'))
+            game.save()
+            attacker = CustomUser.objects.get(id=game.attacker.id)
+            defender = CustomUser.objects.get(id=game.defender.id)
+            result = game_result(game.attacker_card, game.defender_card, game.is_greater_wins)
+            score = abs(game.attacker_card - game.defender_card)
+            if result == 0:
+                game.winner = None
+            elif result == 1:
+                game.winner = attacker
+                attacker.score += score
+                defender.score -= score
+            else:
+                game.winner = defender
+                defender.score += score
+                attacker.score -= score
+            attacker.save()
+            defender.save()
+            game.save()
+            return redirect('game:game_list', defender.id)
+            
+
+def game_result(user1_card, user2_card, is_greater_wins):
+    if user1_card == user2_card:
+        return 0 #무승부
+    if is_greater_wins:
+        return 1 if user1_card > user2_card else 2 #1: user1 승, 2: user2 승
+    return 1 if user1_card < user2_card else 2
+            
