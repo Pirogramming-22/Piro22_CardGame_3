@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
     'users',
     'game',
 ]
@@ -97,15 +97,12 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_PROVIDERS = {
-    'kakao': {
-        'SCOPE': [
-            'profile_nickname',   #sns플랫폼에 따라 달라지는 부분분
 
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
+    'naver': {'APP': {
+                        'client_id': 'H9gjulGnlto0mWaOOJKf',
+                        'secret': '5YqHd9qmeL',
+                        'key': ''
+                }},
 }
 
 LANGUAGE_CODE = 'ko'
