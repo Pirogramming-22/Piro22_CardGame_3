@@ -102,17 +102,16 @@ def respondSave(request, game_id):
             attacker = CustomUser.objects.get(id=game.attacker.id)
             defender = CustomUser.objects.get(id=game.defender.id)
             result = game_result(game.attacker_card, game.defender_card, game.is_greater_wins)
-            score = abs(game.attacker_card - game.defender_card)
             if result == 0:
                 game.winner = None
             elif result == 1:
                 game.winner = attacker
-                attacker.score += score
-                defender.score -= score
+                attacker.score += game.attacker_card
+                defender.score -= game.defender_card
             else:
                 game.winner = defender
-                defender.score += score
-                attacker.score -= score
+                defender.score += game.defender_card
+                attacker.score -= game.attacker_card
             attacker.save()
             defender.save()
             game.save()
