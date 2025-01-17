@@ -27,12 +27,13 @@
               <td>{{game.id}}</td>
               <td>{{game.attacker}} vs {{game.defender}}</td>
               <td>
-                {% if game.winner == None %}
+                {% if game.winner == None and not game.defender_card%}
                   {%if game.attacker.username == user.username%} {% comment %}로그인한 유저가 공격하고 게임 안끝났을 때{% endcomment %}
                     <span class="gameProgress">
                       진행중...<a href="{%url 'game:cancel_game' game.id%}">개임취소</a>
                     </span>
-                  {% else %} 
+            
+                  {% else %}
                     <span class="counterAttack">
                       <a href="{%url 'game:respond_game' game.id%}">CounterAttack</a>
                     </span>
