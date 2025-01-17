@@ -6,7 +6,7 @@
 {% block content %}
 <!-- 구현 -->
 <section class="game-box">
-  <h2>{{ game.id }} - {{ attacker.username }} VS {{ defender.username }}</h2>
+  <h2>{{ game.id }} - {{ attacker }} VS {{ defender }}</h2>
   <p>
     {% if game.is_greater_wins %}
       숫자가 큰 사람이 이깁니다.
@@ -42,10 +42,20 @@
     </li>
     <li>
       점수: 
-      {% if request.user == attacker %}
-        {{ attacker_card }}
+      {% if result == 0 %}
+        0
+      {% elif request.user == attacker %}
+        {% if result == 1 %}
+          {{ attacker_card }}
+        {% else %}
+          -{{ attacker_card }}
+        {% endif %}
       {% elif request.user == defender %}
-        {{ loser_score }}
+        {% if result == 2 %}
+          {{ defender_card }}
+        {% else %}
+          -{{ defender_card }}
+        {% endif %}
       {% endif %}
     </li>
 </ul>
