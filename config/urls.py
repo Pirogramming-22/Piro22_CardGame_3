@@ -25,8 +25,6 @@ urlpatterns = [
     path('gameInfo1/', views.gameInfo1),
     path('gameInfo2/', views.gameInfo2),
     path('gameInfo3/', views.gameInfo3),
-    path('smk_Attack', views.smk_Attack),
-    path('smk_CounterAttack', views.smk_CounterAttack),
 ]
 
 
