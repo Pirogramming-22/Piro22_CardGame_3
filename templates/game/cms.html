@@ -53,8 +53,8 @@
               </td>
               <td>
                 <a href="
-                {% if game.winner == None and not game.defender_cardand}
-                    {%if game.attacker.username == user.username%} 
+                  {% if game.winner == None and not game.defender_card%}
+                    {% if game.attacker.username == user.username %} 
                       {% url 'game:gameInfo1' game.id %}
                     {% else %} 
                       {% url 'game:gameInfo2' game.id %}
