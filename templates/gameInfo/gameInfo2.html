@@ -3,12 +3,13 @@
 {% endblock head %} {% block content %}
 <!-- 구현 -->
 <section class="game-box">
-  <h2>6 - user1 VS user3</h2>
+  <h2>{{ game.id }} - {{ attacker }} VS {{ defender }}</h2>
   <div class="game-actions">
     <a href="{% url 'game:respond_game' game.id %}">
       <button>반격하기</button>
     </a>
     <button>전적목록</button>
+    </a>
   </div>
 </section>
 <!-- 구현 -->
