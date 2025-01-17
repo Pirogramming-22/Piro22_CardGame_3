@@ -15,4 +15,6 @@ urlpatterns = [
     path('respond/<int:game_id>/', views.respond_game, name='respond_game'),  # 게임에 반격
     path('respondSave/<int:game_id>', views.respondSave, name='respondSave'),
     path('rankings/', views.rankings, name='rankings'),  # 랭킹 보기
+    #path('smk_Attack', views.smk_Attack),
+    #path('smk_CounterAttack', views.smk_CounterAttack),
 ]
