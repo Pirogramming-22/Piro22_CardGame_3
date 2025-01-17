@@ -43,7 +43,7 @@
           {% if user.is_authenticated %}
           <span>{{ user.username }} 님</span>
           <a href="/play">게임하기</a>
-          <a href="/ranking">랭킹보기</a>
+          <a href="{% url 'game:rankings' %}">랭킹보기</a>
           <a href="{% url 'users:logout' %}">로그아웃</a>
           {% else %}
           <a href="{% url 'users:login' %}">로그인</a>
