@@ -15,7 +15,7 @@
         <a href="{%url 'users:main' %}">Pirogrammer Card Game</a>
         <div class="base_menus">
           {% block base_menus%}
-          <a href="">게임하기</a>
+          <a href="{%url 'game:create_game' %} ">게임하기</a>
           <a href="{% url 'game:rankings' %}">랭킹보기</a>
           <a href="{% url 'users:logout' %}">로그아웃</a>
           {%endblock base_menus%}

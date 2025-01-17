@@ -1,13 +1,7 @@
-{%load static%} {% load socialaccount %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인</title>
-    <link rel="stylesheet" href="{% static 'game/reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'game/base.css' %}" />
-  </head>
+{% extends 'base/base.html' %}
+{%load static%} 
+{% load socialaccount %}
+{% block head %}
   <style>
     main {
       display: flex;
@@ -79,17 +73,12 @@
       color: #a69316;
     }
   </style>
-  <body>
-    <header>
-      <nav>
-        <a href="#">Pirogrammer Card Game</a>
-        <div class="base_menus">
+  {% endblock %}
+{% block base_menus %}
           <a href="{% url 'users:main' %}">홈으로</a>
           <a href="{% url 'users:signup' %}">회원가입</a>
-        </div>
-      </nav>
-    </header>
-    <main>
+          {% endblock base_menus %}
+{%block content%}
       <form method="POST" action="{% url 'users:login' %}">
         {% csrf_token %}
         <div class="mainWrapper">
@@ -121,11 +110,8 @@
           </button>
         </div>
       </form>
-    </main>
-    <footer>
-      <p>피로그래밍 22기 카드게임 세션3조</p>
-    </footer>
-  </body>
+    {% endblock content%}
+  {% block js %}
   <script>
     // Django에서 전달한 login_success를 JS 변수로 설정
     const loginSuccess = {{ login_success|default:"null" }};
@@ -136,4 +122,4 @@
       console.log("Login failed: Invalid username or password.");
     }
   </script>
-</html>
+  {% endblock js %}
