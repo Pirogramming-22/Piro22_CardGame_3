@@ -44,10 +44,10 @@ header {
 main {
   flex: 1;
   background-color: var(--image_background);
-  /*padding-top: 60px; 
+  padding-top: 60px; 
   padding-bottom: 40px; 
   display: flex;
-  align-items: center;*/
+  align-items: center;
 }
 
 header {
