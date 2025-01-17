@@ -1,19 +1,51 @@
-{% extends '../base/base.html'%} {% load static%} {% block head %}
-<link rel="stylesheet" href="{%static 'game/gameInfo.css'%}" />
-{% endblock head %} {% block content %}
+{% extends '../base/base.html'%}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'game/gameInfo.css' %}" />
+{% endblock head %}
+{% block content %}
 <!-- 구현 -->
 <section class="game-box">
-  <h2>5 - user1 VS user2</h2>
-  <p>숫자가 작은 사람이 이깁니다.</p>
+  <h2>{{ game.id }} - {{ attacker.username }} VS {{ defender.username }}</h2>
+  <p>
+    {% if game.is_greater_wins %}
+      숫자가 큰 사람이 이깁니다.
+    {% else %}
+      숫자가 작은 사람이 이깁니다.
+    {% endif %}
+  </p>
   <ul class="game-stats">
-    <li>user1: 6</li>
-    <li>user2: 4</li>
-    <li>결과: 패배</li>
-    <li>점수: -6</li>
-  </ul>
+    <li>{{ attacker.username }}: {{ attacker_card }}</li>
+    <li>{{ defender.username }}: 
+      {% if defender_card %}
+        {{ defender_card }}
+      {% else %}
+        아직 선택하지 않음
+      {% endif %}
+    </li>
+    <li>결과: 
+      {% if result == 0 %}
+        무승부
+      {% elif result == 1 %}
+        {{ attacker.username }} 승리
+      {% else %}
+        {{ defender.username }} 승리
+      {% endif %}
+    </li>
+    <li>
+      점수: 
+      {% if score %}
+        {{ score }}
+      {% else %}
+        계산 대기 중
+      {% endif %}
+    </li>
+</ul>
   <div class="game-actions">
-    <button>전체목록</button>
+    <a href="{% url 'game:game_list' request.user.id %}">
+      <button>전적목록</button>
+    </a>
   </div>
 </section>
 <!-- 구현 -->
-{% endblock content%}
+{% endblock content %}

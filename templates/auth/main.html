@@ -1,4 +1,4 @@
-{% load static %}
+{%load static%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,39 +6,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/game/reset.css" />
-    <link rel="stylesheet" href="../../static/game/base.css" />
+    <link rel="stylesheet" href="{% static 'game/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'game/base.css' %}" />
+    <style>
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: Inter, sans-serif;
+        height: 100vh;
+      }
+      .title {
+        font-size: 8rem;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        color: white;
+        margin-bottom: 2rem;
+      }
+      button {
+        background-color: #17d6b5;
+        width: 12.75rem;
+        height: 3.5rem;
+        border-radius: 1rem;
+        font-size: 2rem;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin: 1rem;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #14b59e;
+      }
+      footer {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1rem;
+        color: #aaa;
+      }
+    </style>
   </head>
-  <style>
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: Inter;
-      color: #fff;
-    }
-    .title {
-      font-size: 8rem;
-      font-style: normal;
-      font-weight: 800;
-      line-height: normal;
-    }
-
-    button {
-      background-color: #17d6b5;
-      width: 12.75rem;
-      height: 3.5rem;
-      border-radius: 1rem;
-      font-size: 2rem;
-      color: white;
-      margin: 1rem;
-    }
-  </style>
   <body>
     <header>
       <nav>
-        <a href="">Pirogrammer Card Game</a>
+        <a href="#">Pirogrammer Card Game</a>
         <div class="base_menus">
           {% if user.is_authenticated %}
           <span>{{ user.username }} 님</span>
@@ -54,30 +67,40 @@
     </header>
     <main>
       <div class="title">Piro Game</div>
-      <div class="loginING">
-        {% if user.is_authenticated %} {{ user.username }} 님이 로그인 중
-        {%else%}{% endif %}
-      </div>
+      {% if user.is_authenticated %}
+      <div class="loginING">{{ user.username }} 님이 로그인 중</div>
       <div>
-        <button class="start">start</button> <button class="list">list</button>
+        <button
+          class="start"
+          onclick="window.location.href='{% url 'game:create_game' %}'"
+        >
+          start
+        </button>
+        <button class="list" onclick="window.location.href=''">list</button>
       </div>
+      {%else %}
+      <button class="start" onclick="loginAlert()">start</button>
+      {% endif %}
     </main>
     <footer>
       <p>피로그래밍 22기 카드게임 세션3조</p>
     </footer>
-  </body>
-  <script>
-    // 로그인 상태 여부 (예: 로컬 스토리지나 쿠키 확인)
-    const isLoggedIn = "{{ user.is_authenticated|yesno:'true,false' }}";
-    // 로그인 상태에 따라 loginING 요소를 숨김
-    document.addEventListener("DOMContentLoaded", () => {
-      const loginStatusElement = document.querySelector(".loginING");
-      const listButton = document.querySelector(".list");
+    <script>
+      const isLoggedIn = "{{ user.is_authenticated|yesno:'true,false' }}";
 
-      if (isLoggedIn === "false") {
-        loginStatusElement.style.display = "none";
-        listButton.style.display = "none";
+      function loginAlert() {
+        alert("로그인이 필요합니다!");
       }
-    });
-  </script>
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const loginStatusElement = document.querySelector(".loginING");
+        const listButton = document.querySelector(".list");
+
+        if (user.is_authenticated === "false") {
+          loginStatusElement.style.display = "none";
+          listButton.style.display = "none";
+        }
+      });
+    </script>
+  </body>
 </html>

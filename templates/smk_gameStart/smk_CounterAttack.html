@@ -4,12 +4,7 @@
   <link rel="stylesheet" href="{%static 'game/smk.css'%}">
 {% endblock head %}
 {% block content %}
-    <!-- 구현 -->
-
-      <!-- url 우선 주석처리해두었습니다 
-      <form method="POST" action="">
-      -->
-
+    <form method="POST" action="{%url 'game:respondSave' game.id%}">
       {% csrf_token %}      
 
     <section class="game-box">
@@ -31,5 +26,4 @@
     </section>
     
     </form>
-    <!-- 구현 -->
 {% endblock content%}
