@@ -25,17 +25,17 @@ def gameInfo3(request, game_id):
     result = game_result(game.attacker_card, game.defender_card, game.is_greater_wins)
 
     # 점수 계산
-    score = abs(game.attacker_card - game.defender_card) if game.defender_card is not None else None
-
+    # winner_score = game.attacker_card
+    # loser_score = game.defender_card
     context = {
         'game': game,
         'attacker': game.attacker,
         'defender': game.defender,
         'attacker_card': game.attacker_card,
         'defender_card': game.defender_card,
+        'loser_score':  - game.defender_card,
         'result': result,
         'winner': game.winner,
-        'score': score,  # 점수를 컨텍스트에 추가
     }
     return render(request, 'gameInfo/gameInfo3.html', context)
 
