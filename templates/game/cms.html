@@ -27,32 +27,37 @@
               <td>{{game.id}}</td>
               <td>{{game.attacker}} vs {{game.defender}}</td>
               <td>
-                {% if game.winner == None %}
-                  {%if game.attacker.username == user.username%} {% comment %}로그인한 유저가 공격하고 게임 안끝났을 때{% endcomment %}
+                {% if game.result == None %}
+                  {%if game.attacker.username == user.username%} {% comment %}로그인한 유저가 공격하고 게임 안끝났을 때때{% endcomment %}
                     <span class="gameProgress">
-                      진행중...<a href="{%url 'game:cancel_game' game.id%}">개임취소</a>
+                      진행중...<a href="{%url 'game:cancel_game' game.id%}">개임취소</a> {% comment %}게임 진행중{% endcomment %}
                     </span>
                   {% else %} 
                     <span class="counterAttack">
-                      <a href="{%url 'game:respond_game' game.id%}">CounterAttack</a>
+                      <a href="#">CounterAttack</a> {% comment %}카운터어택{% endcomment %}
                     </span>
                   {% endif %}
                 {% else %}
                   <span class="">
-                    결과: 
-                    {% if game.winner.username == user.username %}
-                      승리
-                    {% elif game.winner.username == None %}
-                      무승부
-                    {% else %}
-                      패배
-                    {% endif %}
+                    결과: {{game.result}}  {% comment %}게임종료{% endcomment %}
                   </span>
                 {% endif %}
               </td>
-              
-              <td><button class="gameTbBtn">게임 정보</button></td>
-              
+              <td>
+                <a href="
+                  {% if game.result == None %}
+                    {%if game.attacker.username == user.username%} 
+                      {% url 'game:gameInfo1' %}
+                    {% else %} 
+                      {% url 'game:gameInfo2' %}
+                    {% endif %}
+                  {% else %}
+                    {% url 'game:gameInfo3' %}
+                  {% endif %}
+                ">
+                  <button class="gameTbBtn">게임 정보</button>
+                </a>
+              </td>
             </tr>
             {% endfor %}
             
