@@ -4,62 +4,26 @@
   <link rel="stylesheet" href="{%static 'game/smk.css'%}">
 {% endblock head %}
 {% block content %}
-    <!-- 구현 -->
+    <form method="POST" action="{%url 'game:respondSave' game.id%}">
+      {% csrf_token %}      
 
     <section class="game-box">
       <div class="gameAttack-defender">
         <h2>반격할 카드: </h2>
-        <form id="cardForm">
           <div id="radioButtons">
-            <!-- 라디오 버튼이 여기에 생성됩니다 -->
+            {% for number in random_numbers %}
+              <div class="radio-item">
+                <input type="radio" name="card" value="{{ number }}" id="card{{ number }}">
+                <label for="card{{ number }}">{{ number }}</label>
+              </div>
+            {% endfor %}
           </div>
-        </form>
       </div>
 
       <div class="button-container">
-        <a href="" class="game-button" style="color:#319B88">CounterAttack</a>
+        <button type="submit" class="game-button" style="color:#319B88">Attack!</button>
       </div>
     </section>
-
-      <!-- 랜덤한 숫자 5개를 뽑아서 라디오 버튼으로 만들어주는 기능-> 수정예정
-      <script> 
-        function generateRandomNumbers() {
-          const numbers = Array.from({ length: 10 }, (_, i) => i + 1); // 1~10 숫자 배열
-          const randomNumbers = [];
-      
-          // 랜덤하게 5개의 숫자를 선택
-          while (randomNumbers.length < 5) {
-            const randomIndex = Math.floor(Math.random() * numbers.length);
-            randomNumbers.push(numbers.splice(randomIndex, 1)[0]); // 중복 제거
-          }
-      
-          // 라디오 버튼 생성
-          const radioButtonsContainer = document.getElementById('radioButtons');
-          randomNumbers.forEach((number) => {
-          const radioItem = document.createElement('div');
-          radioItem.className = 'radio-item'; // 좌우 정렬 스타일 적용
-
-          const radio = document.createElement('input');
-          radio.type = 'radio';
-          radio.name = 'card';
-          radio.value = number;
-          radio.id = `card${number}`;
-
-          const label = document.createElement('label');
-          label.htmlFor = `card${number}`;
-          label.textContent = number;
-
-          radioItem.appendChild(radio);
-          radioItem.appendChild(label);
-          radioButtonsContainer.appendChild(radioItem);
-        });
-      }
-
-      // 페이지 로드 시 초기 실행
-      window.onload = generateRandomNumbers;
-
-    </script>
-  
-  -->
-    <!-- 구현 -->
+    
+    </form>
 {% endblock content%}

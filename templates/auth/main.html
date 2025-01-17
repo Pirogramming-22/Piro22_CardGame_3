@@ -15,16 +15,14 @@
         align-items: center;
         flex-direction: column;
         font-family: Inter, sans-serif;
-        color: #fff;
         height: 100vh;
-        background-color: #000;
       }
       .title {
         font-size: 8rem;
         font-style: normal;
         font-weight: 800;
         line-height: normal;
-        color: #17d6b5;
+        color: white;
         margin-bottom: 2rem;
       }
       button {
@@ -58,7 +56,7 @@
           {% if user.is_authenticated %}
           <span>{{ user.username }} 님</span>
           <a href="/play">게임하기</a>
-          <a href="/ranking">랭킹보기</a>
+          <a href="{% url 'game:rankings' %}">랭킹보기</a>
           <a href="{% url 'users:logout' %}">로그아웃</a>
           {% else %}
           <a href="{% url 'users:login' %}">로그인</a>
@@ -71,11 +69,18 @@
       <div class="title">Piro Game</div>
       {% if user.is_authenticated %}
       <div class="loginING">{{ user.username }} 님이 로그인 중</div>
-      {%else %}{% endif %}
       <div>
-        <button class="start" onclick="loginAlert()">Start</button>
-        <button class="list">List</button>
+        <button
+          class="start"
+          onclick="window.location.href='{% url 'game:create_game' %}'"
+        >
+          start
+        </button>
+        <button class="list" onclick="window.location.href=''">list</button>
       </div>
+      {%else %}
+      <button class="start" onclick="loginAlert()">start</button>
+      {% endif %}
     </main>
     <footer>
       <p>피로그래밍 22기 카드게임 세션3조</p>
@@ -83,17 +88,15 @@
     <script>
       const isLoggedIn = "{{ user.is_authenticated|yesno:'true,false' }}";
 
-      const loginAlert = () => {
-        if (isLoggedIn === "false") {
-          alert("로그인이 필요합니다.");
-        }
-      };
+      function loginAlert() {
+        alert("로그인이 필요합니다!");
+      }
 
       document.addEventListener("DOMContentLoaded", () => {
         const loginStatusElement = document.querySelector(".loginING");
         const listButton = document.querySelector(".list");
 
-        if (isLoggedIn === "false") {
+        if (user.is_authenticated === "false") {
           loginStatusElement.style.display = "none";
           listButton.style.display = "none";
         }

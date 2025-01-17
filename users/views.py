@@ -14,7 +14,7 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-           
+            form.save()
             messages.success(request, "회원가입이 완료되었습니다.")
             return redirect(reverse('users:main'))
         else:

@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Piro22_CardGame_3</title>
     <link rel="stylesheet" href="{% static 'game/reset.css'%}" />
     <link rel="stylesheet" href="{% static 'game/base.css'%}" />
     {% block head %} {% endblock %}
@@ -12,12 +12,12 @@
   <body>
     <header>
       <nav>
-        <a href="">Pirogrammer Card Game</a>
+        <a href="{%url 'users:main' %}">Pirogrammer Card Game</a>
         <div class="base_menus">
           {% block base_menus%}
           <a href="">게임하기</a>
-          <a href="">랭킹보기</a>
-          <a href="">로그아웃</a>
+          <a href="{% url 'game:rankings' %}">랭킹보기</a>
+          <a href="{% url 'users:logout' %}">로그아웃</a>
           {%endblock base_menus%}
         </div>
       </nav>
