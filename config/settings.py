@@ -21,12 +21,12 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
     'users',
     'game',
 ]
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
@@ -89,6 +89,7 @@ AUTH_PASSWORD_VALIDATORS = [
  
 ]
 SITE_ID = 2
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 
@@ -99,12 +100,11 @@ ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_PROVIDERS = {
     'kakao': {
         'SCOPE': [
-            'profile_nickname',   #sns플랫폼에 따라 달라지는 부분분
-
+            'profile_nickname',
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
-        }
+        },
     }
 }
 
