@@ -44,7 +44,7 @@
 {%block base_menus%}
           {% if user.is_authenticated %}
           <span>{{ user.username }} 님</span>
-          <a href="/play">게임하기</a>
+          <a href="{% url 'game:create_game' %}">게임하기</a>
           <a href="{% url 'game:rankings' %}">랭킹보기</a>
           <a href="{% url 'users:logout' %}">로그아웃</a>
           {% else %}
