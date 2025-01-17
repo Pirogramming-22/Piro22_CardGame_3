@@ -27,25 +27,32 @@
               <td>{{game.id}}</td>
               <td>{{game.attacker}} vs {{game.defender}}</td>
               <td>
-                {% if game.result == None %}
-                  {%if game.attacker.username == user.username%} {% comment %}로그인한 유저가 공격하고 게임 안끝났을 때때{% endcomment %}
+                {% if game.winner == None %}
+                  {%if game.attacker.username == user.username%} {% comment %}로그인한 유저가 공격하고 게임 안끝났을 때{% endcomment %}
                     <span class="gameProgress">
-                      진행중...<a href="{%url 'game:cancel_game' game.id%}">개임취소</a> {% comment %}게임 진행중{% endcomment %}
+                      진행중...<a href="{%url 'game:cancel_game' game.id%}">개임취소</a>
                     </span>
                   {% else %} 
                     <span class="counterAttack">
-                      <a href="#">CounterAttack</a> {% comment %}카운터어택{% endcomment %}
+                      <a href="{%url 'game:respond_game' game.id%}">CounterAttack</a>
                     </span>
                   {% endif %}
                 {% else %}
                   <span class="">
-                    결과: {{game.result}}  {% comment %}게임종료{% endcomment %}
+                    결과: 
+                    {% if game.winner.username == user.username %}
+                      승리
+                    {% elif game.winner.username == None %}
+                      무승부
+                    {% else %}
+                      패배
+                    {% endif %}
                   </span>
                 {% endif %}
               </td>
               <td>
                 <a href="
-                  {% if game.result == None %}
+                  {% if game.winner == None %}
                     {%if game.attacker.username == user.username%} 
                       {% url 'game:gameInfo1' game.id %}
                     {% else %} 
